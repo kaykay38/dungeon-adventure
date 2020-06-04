@@ -41,10 +41,9 @@ public class Warrior extends Hero
 
 	}//end crushingBlow method
 
-	public void attack(DungeonCharacter opponent)
+	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(name + " swings a mighty sword at " +
-							opponent.getName() + ":");
+		System.out.println(hero.name + " swings a mighty sword at " + opponent.getName() + ":");
 		super.attack(opponent);
 	}//end override of attack method
 

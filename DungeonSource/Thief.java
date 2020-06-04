@@ -25,15 +25,13 @@ public class Thief extends Hero
 		double surprise = Math.random();
 		if (surprise <= .4)
 		{
-			System.out.println("Surprise attack was successful!\n" +
-								name + " gets an additional turn.");
+			System.out.println("Surprise attack was successful!\n" + name + " gets an additional turn.");
 			numTurns++;
 			attack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
 		{
-			System.out.println("Uh oh! " + opponent.getName() + " saw you and" +
-								" blocked your attack!");
+			System.out.println("Uh oh! " + opponent.getName() + " saw you and" + " blocked your attack!");
 		}
 		else
 		    attack(opponent);
@@ -41,7 +39,14 @@ public class Thief extends Hero
 
 	}//end surpriseAttack method
 
-
+	
+	// Added to provide consistency across characters having unique attack messages (Nick 6/4/20)
+	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
+	{
+		System.out.println(hero.name + " throws their dagger at " + opponent.getName() + ":");
+		super.attack(opponent);
+	}//end override of attack method
+	
     public void battleChoices(DungeonCharacter opponent)
 	{
 		super.battleChoices(opponent);
