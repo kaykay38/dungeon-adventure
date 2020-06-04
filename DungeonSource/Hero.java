@@ -1,6 +1,6 @@
 
 
-/**
+/*
  * Title: Hero.java
  *
  * Description: Abstract base class for a hierarchy of heroes.  It is derived
@@ -33,17 +33,22 @@ public abstract class Hero extends DungeonCharacter
 	protected double chanceToBlock;
 	protected int numTurns;
 
-//-----------------------------------------------------------------
-//calls base constructor and gets name of hero from user
+/*-----------------------------------------------------------------
+calls base constructor and gets name of hero from user*/
+
   public Hero(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
 					 double chanceToBlock)
   {
-	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
-	this.chanceToBlock = chanceToBlock;
-	readName();
+	  super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
+	  this.chanceToBlock = chanceToBlock;
+	  readName();
   }
 
+  public int getNumTurns() { return this.numTurns; } //Added for SurpriseAttack class to get numTurns. (Nick 6/4/20)
+  
+  public void setNumTurns(int newNumTurns) { this.numTurns = newNumTurns; } //Added for SurpriseAttack class to set numTurns. (Nick 6/4/20)
+  
 /*-------------------------------------------------------
 readName obtains a name for the hero from the user
 
@@ -115,11 +120,11 @@ This method is called by: external sources
 	public void battleChoices(DungeonCharacter opponent)
 	{
 	    numTurns = attackSpeed/opponent.getAttackSpeed();
-
 		if (numTurns == 0)
 			numTurns++;
-
 		System.out.println("Number of turns this round is: " + numTurns);
+		
+		
 
 	}//end battleChoices
 

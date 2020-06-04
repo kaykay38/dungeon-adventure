@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Comparable
+public abstract class DungeonCharacter implements IAttack
 {
 
 	protected String name;
@@ -41,19 +41,14 @@ public abstract class DungeonCharacter implements Comparable
 	protected int attackSpeed;
 	protected double chanceToHit;
 	protected int damageMin, damageMax;
-
-	public int compareTo(Object o)
-	{
-		return 1;
-	}
+	protected final IAttack attackBehavior1 = new Attack();
+	protected IAttack attackBehavior2; //Added To Store Character's AttackBehavior
 
 //-----------------------------------------------------------------
 //explicit constructor to initialize instance variables -- it is called
 // by derived classes
-	public DungeonCharacter(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax)
+	public DungeonCharacter(String name, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax)
 	{
-
 		this.name = name;
 		this.hitPoints = hitPoints;
 		this.attackSpeed = attackSpeed;
@@ -80,6 +75,13 @@ public abstract class DungeonCharacter implements Comparable
 		return attackSpeed;
 	}//end getAttackSpeed
 
+// New method for setting secondary attack behavior (Nick 6/3/2020)
+	public void setAttackBehavior2(IAttack attackBehavior2)
+	{
+		this.attackBehavior2 = attackBehavior2;
+	}//end setAttackBehavior
+	
+	
 
 /*-------------------------------------------------------
 addHitPoints is used to increment the hitpoints a dungeon character has
@@ -122,10 +124,8 @@ This method is called by: overridden versions in Hero and Monster
 			this.hitPoints -= hitPoints;
 			if (this.hitPoints < 0)
 				this.hitPoints = 0;
-			System.out.println(getName() + " hit " +
-								" for <" + hitPoints + "> points damage.");
-			System.out.println(getName() + " now has " +
-								getHitPoints() + " hit points remaining.");
+			System.out.println(getName() + " hit " + " for <" + hitPoints + "> points damage.");
+			System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
 			System.out.println();
 		}//end else if
 
@@ -146,13 +146,13 @@ This method is called by: unknown (intended for external use)
 ---------------------------------------------------------*/
     public boolean isAlive()
 	{
-	  return (hitPoints > 0);
+    	return (hitPoints > 0);
 	}//end isAlive method
 
 /*-------------------------------------------------------
 attack allows character to attempt attack on opponent.  First, chance to hit
 is considered.  If a hit can occur, then the damage is calculated based on
-character's damage range.  This damage is then applied to the opponenet.
+character's damage range.  This damage is then applied to the opponent.
 
 Receives: opponent being attacked
 Returns: nothing
@@ -161,6 +161,8 @@ This method calls: Math.random(), subtractHitPoints()
 This method is called by: overridden versions of the method in monster and
 hero classes and externally
 ---------------------------------------------------------*/
+    
+// Changed to implement attack interface
 	public void attack(DungeonCharacter opponent)
 	{
 		boolean canAttack;
@@ -170,26 +172,18 @@ hero classes and externally
 
 		if (canAttack)
 		{
-			damage = (int)(Math.random() * (damageMax - damageMin + 1))
-						+ damageMin ;
+			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
 			opponent.subtractHitPoints(damage);
-
-
-
 			System.out.println();
 		}//end if can attack
 		else
 		{
-
-			System.out.println(getName() + "'s attack on " + opponent.getName() +
-								" failed!");
+			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}//end else
-
 	}//end attack method
+	
 
-//-----------------------------------------------------------------
-
-
+	
 
 }//end class Character
