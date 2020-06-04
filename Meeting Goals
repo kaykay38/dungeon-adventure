@@ -1,0 +1,14 @@
+Meeting Goals -- Wednesday, June 3rd 2020
+
+(1) Refactor code from 'DungeonSource' to fit needs of 'DungeonAdventure'
+
+(2) Work on Dungeon room types, and generation of whole dungeon map
+
+(3) Generations items, monsters, and pillars of O.O. 
+
+--------------------------------------------------------------
+Meeting Goals -- Thursday, June 4th 2020
+
+(1) Finish Attack interface
+
+(2) Work on Room.java

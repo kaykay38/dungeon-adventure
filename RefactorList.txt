@@ -1,0 +1,9 @@
+Refactor List
+
+1.) Hero Factory
+2.) Monster Factory
+3.) Attack Interface For Monsters AND Heroes
+4.) Move battleChoices to Hero ONLY
+5.) Remove Keyboard Correctly This Time
+6.) Move Gameplay to DungeonAdventure.java
+7.)
