@@ -54,7 +54,7 @@ public class Dungeon
 		do
 		{
 		    theHero = chooseHero();
-		    theMonster = generateMonster();
+		    theMonster = MonsterFactory.generateMonster();
 			battle(theHero, theMonster);
 
 		} while (playAgain());
@@ -70,48 +70,29 @@ this task
 	{
 		int choice;
 		Hero theHero;
-
-		System.out.println("Choose a hero:\n" +
-					       "1. Warrior\n" +
-						   "2. Sorceress\n" +
-						   "3. Thief");
+		HeroFactory heroFac = new HeroFactory();
+		
+		System.out.println("Choose a hero:\n" + "1. Warrior\n" + "2. Sorceress\n" + "3. Thief");
 		choice = Keyboard.readInt();
 
 		switch(choice)
 		{
-			case 1: return new Warrior();
+			case 1: return heroFac.createWarrior();
 
-			case 2: return new Sorceress();
+			case 2: return heroFac.createSorceress();
 
-			case 3: return new Thief();
+			case 3: return heroFac.createThief();
 
 			default: System.out.println("invalid choice, returning Thief");
 				     return new Thief();
 		}//end switch
 	}//end chooseHero method
 
-/*-------------------------------------------------------------------
-generateMonster randomly selects a Monster and returns it.  It utilizes
-a polymorphic reference (Monster) to accomplish this task.
----------------------------------------------------------------------*/
-	public static Monster generateMonster()
-	{
-		int choice;
 
-		choice = (int)(Math.random() * 3) + 1;
+	
+/** Moved monster generation to Factory**/
 
-		switch(choice)
-		{
-			case 1: return new Ogre();
 
-			case 2: return new Gremlin();
-
-			case 3: return new Skeleton();
-
-			default: System.out.println("invalid choice, returning Skeleton");
-				     return new Skeleton();
-		}//end switch
-	}//end generateMonster method
 
 /*-------------------------------------------------------------------
 playAgain allows gets choice from user to play another game.  It returns
@@ -137,8 +118,7 @@ user has the option of quitting.
 	public static void battle(Hero theHero, Monster theMonster)
 	{
 		char pause = 'p';
-		System.out.println(theHero.getName() + " battles " +
-							theMonster.getName());
+		System.out.println(theHero.getName() + " battles " + theMonster.getName());
 		System.out.println("---------------------------------------------");
 
 		//do battle
