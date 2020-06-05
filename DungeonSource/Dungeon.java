@@ -70,22 +70,14 @@ this task
 	{
 		int choice;
 		Hero theHero;
-		HeroFactory heroFac = new HeroFactory();
 		
 		System.out.println("Choose a hero:\n" + "1. Warrior\n" + "2. Sorceress\n" + "3. Thief");
 		choice = Keyboard.readInt();
 
-		switch(choice)
-		{
-			case 1: return heroFac.createWarrior();
+		theHero = HeroFactory.createHero(choice);
 
-			case 2: return heroFac.createSorceress();
+		return theHero;
 
-			case 3: return heroFac.createThief();
-
-			default: System.out.println("invalid choice, returning Thief");
-				     return new Thief();
-		}//end switch
 	}//end chooseHero method
 
 
