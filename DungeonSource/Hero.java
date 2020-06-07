@@ -64,6 +64,19 @@ This method is called by: hero constructor
 		name = Keyboard.readString();
   }//end readName method
 
+  
+/****************************************************
+ * toString() displays fundamental hero information *
+ ****************************************************/
+  public String toString() {
+	  return "\n\t   -" + this.name + "'s Stats-" 
+	  + " \n\t| Hitpoints: " + this.hitPoints 
+	  + " \n\t| Healing Potions: " + this.healthPotions
+	  + " \n\t| Vision Potions: " + this.visionPotions
+	  + " \n\t| OO Pillars found: " + this.ooPillars + "\n";
+}//end toString method
+  
+  
 /*-------------------------------------------------------
 defend determines if hero blocks attack
 

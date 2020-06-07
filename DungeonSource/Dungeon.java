@@ -130,7 +130,7 @@ user has the option of quitting.
 		}//end battle loop
 
 		if (!theMonster.isAlive())
-		    System.out.println(theHero.getName() + " was victorious!");
+		    System.out.println(theHero.getName() + " was victorious!\n" + theHero.toString());
 		else if (!theHero.isAlive())
 			System.out.println(theHero.getName() + " was defeated :-(");
 		else//both are alive so user quit the game
