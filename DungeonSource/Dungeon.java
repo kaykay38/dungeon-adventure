@@ -45,7 +45,9 @@
 */
 public class Dungeon
 {
-    public static void main(String[] args)
+	public Room[][] DungeonRooms = new Room[5][5];
+	
+    public static void main(String[] args)	/** We'll need to remove this and make it a method **/
 	{
 
 		Hero theHero;
@@ -82,7 +84,7 @@ this task
 
 
 	
-/** Moved monster generation to Factory**/
+/** Moved monster generation to Factory **/
 
 
 
@@ -139,4 +141,18 @@ user has the option of quitting.
 	}//end battle method
 
 
+	
+	/** Game Dependent Objects Spawning methods **/
+//Places the Entrance, the Exit, and the Pillars of OO Pieces. 
+//	RULES: (1) The entrance and exit are empty rooms. 
+//   	   (2) The Pillar pieces cannot be at the entrance or the exit. 
+//  	   (3) Pillar pieces must not occur in the same room.
+	
+	/** Player Tracking method **/
+// Maintains location of the Hero in the Dungeon
+	
+	/** toString method**/
+// Builds a String containing information about the ENTIRE dungeon.
+	
+	
 }//end Dungeon class

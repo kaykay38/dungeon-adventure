@@ -41,7 +41,6 @@ public abstract class DungeonCharacter implements IAttack
 	protected int attackSpeed;
 	protected double chanceToHit;
 	protected int damageMin, damageMax;
-	protected int healthPotions, visionPotions, ooPillars; //Fundamental Hero info
 	protected IAttack attackBehavior; //Added To Store Character's AttackBehavior
 
 //-----------------------------------------------------------------
@@ -55,6 +54,7 @@ public abstract class DungeonCharacter implements IAttack
 		this.chanceToHit = chanceToHit;
 		this.damageMin = damageMin;
 		this.damageMax = damageMax;
+
 
 	}//end constructor
 

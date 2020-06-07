@@ -31,6 +31,7 @@
 public abstract class Hero extends DungeonCharacter
 {
 	protected double chanceToBlock;
+	protected int healthPotions, visionPotions, ooPillars; //Fundamental Hero info
 	protected int numTurns;
 
 /*-----------------------------------------------------------------
@@ -42,6 +43,9 @@ calls base constructor and gets name of hero from user*/
   {
 	  super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 	  this.chanceToBlock = chanceToBlock;
+	  this.healthPotions = 0;
+	  this.visionPotions = 0;
+	  this.ooPillars = 0;
 	  readName();
   }
 
@@ -141,4 +145,11 @@ This method is called by: external sources
 
 	}//end battleChoices
 
+	
+/** Player movement methods **/	
+
+	
+/** Player tracking methods **/	
+
+	
 }//end Hero class
