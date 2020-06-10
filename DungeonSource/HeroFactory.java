@@ -1,13 +1,30 @@
 
 public class HeroFactory {
 	public static Hero createHero(int choice) {
+		
+		AttackFactory attfac = new AttackFactory();
+		
 		switch(choice)
 		{
-			case 1: return new Warrior();
+			case 1: Hero warrior = new Warrior();
+					warrior.setAttackBehaviors(attfac.getAttack("CrushingBlow"));
+					return warrior;
 
-			case 2: return new Sorceress();
+			case 2: Hero sorceress = new Sorceress();
+					sorceress.setAttackBehaviors(attfac.getAttack("IncreaseHitPoints"));
+					return sorceress;
 
-			case 3: return new Thief();
+			case 3: Hero thief = new Thief();
+					thief.setAttackBehaviors(attfac.getAttack("SurpriseAttack"));
+					return thief;
+					
+			case 4: Hero jstudent = new JavaStudent();
+					jstudent.setAttackBehaviors(attfac.getAttack("NullPointer"));
+					return jstudent;
+					
+			case 5: Hero psychic = new Psychic();
+					psychic.setAttackBehaviors(attfac.getAttack("Forsee"));
+					return psychic;
 
 			default: System.out.println("invalid choice, returning Thief");
 				     return new Thief();

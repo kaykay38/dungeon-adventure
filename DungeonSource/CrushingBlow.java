@@ -16,4 +16,9 @@ public class CrushingBlow implements IAttack
 		}//blow failed
 
 	}
+	
+	public String toString() 
+	{
+		return "Crushing Blow";
+	}
 }

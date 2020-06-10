@@ -73,7 +73,7 @@ this task
 		int choice;
 		Hero theHero;
 		
-		System.out.println("Choose a hero:\n" + "1. Warrior\n" + "2. Sorceress\n" + "3. Thief");
+		System.out.println("Choose a hero:\n" + "1. Warrior\n" + "2. Sorceress\n" + "3. Thief\n" + "4. Java Student\n" + "5. Psychic");
 		choice = Keyboard.readInt();
 
 		theHero = HeroFactory.createHero(choice);
@@ -123,7 +123,7 @@ user has the option of quitting.
 
 			//monster's turn (provided it's still alive!)
 			if (theMonster.isAlive())
-			    theMonster.attack(theHero);
+			    theMonster.attack(theMonster, theHero);
 
 			//let the player bail out if desired
 			System.out.print("\n-->q to quit, anything else to continue: ");

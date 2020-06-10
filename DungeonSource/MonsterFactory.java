@@ -8,7 +8,7 @@ public class MonsterFactory {
 	public static Monster generateMonster()
 	{
 		
-		int choice = (int)(Math.random() * 3) + 1;
+		int choice = (int)(Math.random() * 5) + 1;
 
 		switch(choice)
 		{
@@ -17,9 +17,13 @@ public class MonsterFactory {
 			case 2: return new Gremlin();
 
 			case 3: return new Skeleton();
+			
+			case 4: return new Stheno();
+			
+			case 5: return new Drake();
 
 			default: System.out.println("invalid choice, returning Skeleton");
-				     return new Skeleton();
+				     return new Stheno();
 		}//end switch
 	}//end generateMonster method
 }
