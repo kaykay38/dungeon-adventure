@@ -45,24 +45,30 @@
 */
 public class Dungeon
 {
-	public Room[][] DungeonRooms = new Room[5][5];
+	public Room[][] dungeonRooms;
 	
-    public static void main(String[] args)	/** We'll need to remove this and make it a method **/
+//    public static void main(String[] args)	/** We'll need to remove this and make it a method **/
+//	{
+//
+//		Hero theHero;
+//		Monster theMonster;
+//
+//		do
+//		{
+//		    theHero = chooseHero();
+//		    theMonster = MonsterFactory.generateMonster();
+//			battle(theHero, theMonster);
+//
+//		} while (playAgain());
+//
+//    }//end main method
+
+	public Dungeon()
 	{
-
-		Hero theHero;
-		Monster theMonster;
-
-		do
-		{
-		    theHero = chooseHero();
-		    theMonster = MonsterFactory.generateMonster();
-			battle(theHero, theMonster);
-
-		} while (playAgain());
-
-    }//end main method
-
+		this.dungeonRooms = new Room[5][5];
+	}
+	
+	
 /*-------------------------------------------------------------------
 chooseHero allows the user to select a hero, creates that hero, and
 returns it.  It utilizes a polymorphic reference (Hero) to accomplish
@@ -73,7 +79,13 @@ this task
 		int choice;
 		Hero theHero;
 		
-		System.out.println("Choose a hero:\n" + "1. Warrior\n" + "2. Sorceress\n" + "3. Thief\n" + "4. Java Student\n" + "5. Psychic");
+		System.out.print("\t\t\tChoose a hero:\n\t\t\t" 
+		                       + "1. Warrior\n\t\t\t" 
+				               + "2. Sorceress\n\t\t\t" 
+		                       + "3. Thief\n\t\t\t" 
+				               + "4. Java Student\n\t\t\t" 
+		                       + "5. Psychic\n\n\t\t\t    "
+				               + ">");
 		choice = Keyboard.readInt();
 
 		theHero = HeroFactory.createHero(choice);
@@ -116,7 +128,7 @@ user has the option of quitting.
 		System.out.println("---------------------------------------------");
 
 		//do battle
-		while (theHero.isAlive() && theMonster.isAlive() && pause != 'q')
+		while (theHero.isAlive() && theMonster.isAlive())
 		{
 		    //hero goes first
 			theHero.battleChoices(theMonster);
@@ -125,18 +137,12 @@ user has the option of quitting.
 			if (theMonster.isAlive())
 			    theMonster.attack(theMonster, theHero);
 
-			//let the player bail out if desired
-			System.out.print("\n-->q to quit, anything else to continue: ");
-			pause = Keyboard.readChar();
-
 		}//end battle loop
 
 		if (!theMonster.isAlive())
-		    System.out.println(theHero.getName() + " was victorious!\n" + theHero.toString());
+		    System.out.println(theHero.getName() + " was victorious!\n");
 		else if (!theHero.isAlive())
 			System.out.println(theHero.getName() + " was defeated :-(");
-		else//both are alive so user quit the game
-			System.out.println("Quitters never win ;-)");
 
 	}//end battle method
 

@@ -62,7 +62,7 @@ This method is called by: hero constructor
 ---------------------------------------------------------*/
   public void readName()
   {
-		System.out.print("Enter character name: ");
+		System.out.print("\tEnter character name: ");
 		name = Keyboard.readString();
   }//end readName method
 
@@ -71,11 +71,11 @@ This method is called by: hero constructor
  * toString() displays fundamental hero information *
  ****************************************************/
   public String toString() {
-	  return "\n\t   -" + this.name + "'s Stats-" 
-	  + " \n\t| Hitpoints: " + this.hitPoints 
-	  + " \n\t| Healing Potions: " + this.healthPotions
-	  + " \n\t| Vision Potions: " + this.visionPotions
-	  + " \n\t| OO Pillars found: " + this.ooPillars + "\n";
+	  return "\n\t        -" + this.name + "'s Stats-" 
+	  + " \n\t     | Hitpoints: " + this.hitPoints 
+	  + " \n\t     | Healing Potions: " + this.healthPotions
+	  + " \n\t     | Vision Potions: " + this.visionPotions
+	  + " \n\t     | OO Pillars found: " + this.ooPillars + "\n";
 }//end toString method
   
   
@@ -145,6 +145,7 @@ This method is called by: external sources
 		{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. " + this.specialBehavior.toString());
+		    System.out.println("3. Use Health Potion" + " ["+ this.healthPotions +" available]");
 		    System.out.print("Choose an option: ");
 		    choice = Keyboard.readInt();
 
@@ -154,6 +155,15 @@ This method is called by: external sources
 			        break;
 			    case 2: this.specialBehavior.attack(this, opponent);
 			        break;
+			    case 3: 
+			    	if(this.healthPotions == 0)
+			    	{
+					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available\n");
+					break;
+			    	} else
+						this.hitPoints += hpPotion();
+		    			System.out.println("\n*Health Potion consumed*\n" + this.name + "'s health is now " + this.hitPoints + "\n");
+			    		break;
 			    default:
 			        System.out.println("invalid choice!");
 		    }//end switch
@@ -167,9 +177,56 @@ This method is called by: external sources
 	}//end battleChoices
 
 	
-/** Player movement methods **/	
-
+/** Player choice methods **/	
+	public void playerInventory(Hero player)
+	{
+		System.out.println("1) Use Health Potion   "
+						 + "2) Use Vision Potion   "
+						 + "3) Continue");
+		int choice = Keyboard.readInt();
+		while(choice > 1 || choice < 3) {
+			switch(choice)
+			{
+				case 1:
+					if(this.healthPotions > 0)
+					{
+						int prevHP = this.hitPoints;
+						this.hitPoints += hpPotion();
+						System.out.println("You wipe the red elixir from your lips, health went up " 
+												+ (this.hitPoints - prevHP) + " points");
+						System.out.println("\t>Current Hitpoints: " + this.hitPoints);
+						return;
+					}else
+						System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
+						return;
+					
+				case 2:
+					if(this.visionPotions > 0)
+					{
+						this.visionPotions--;
+						//Mia is doing this	
+					return;
+					} else
+						System.out.println("You look in your potion bag and admire the dust...\n\t>No vision potions available");
+					return;
+				case 3:
+					return;
+					
+				default:
+					System.out.println("Invalid choice, try again");
+					System.out.println("1) Use Health Potion   "
+							 + "2) Use Vision Potion   "
+							 + "3) Continue");
+					choice = Keyboard.readInt();
+			}
+		}
+	}
 	
+	
+/** Health potion methods **/		
+private int hpPotion() { this.healthPotions--; return (int)( Math.random() * 11) + 5; }
+
+
 /** Player tracking methods **/	
 
 	

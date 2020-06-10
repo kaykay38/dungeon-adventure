@@ -130,7 +130,7 @@ This method is called by: overridden versions in Hero and Monster
 		}//end else if
 
 		if (this.hitPoints == 0)
-			System.out.println(name + " has been killed :-(");
+			System.out.println(name + " died fighting valiantly in the Dungeon.");
 
 
 	}//end method
