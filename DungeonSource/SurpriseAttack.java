@@ -17,4 +17,10 @@ public class SurpriseAttack implements IAttack
 		else
 		    attack(hero, opponent);
 	}//end attack method
+	
+	public String toString() 
+	{
+		return "Surprise Attack";
+	}
+	
 }

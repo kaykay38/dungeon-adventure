@@ -41,7 +41,7 @@ public abstract class DungeonCharacter implements IAttack
 	protected int attackSpeed;
 	protected double chanceToHit;
 	protected int damageMin, damageMax;
-	protected IAttack attackBehavior; //Added To Store Character's AttackBehavior
+	protected IAttack specialBehavior; //Added To Store Character's AttackBehavior
 
 //-----------------------------------------------------------------
 //explicit constructor to initialize instance variables -- it is called
@@ -76,9 +76,9 @@ public abstract class DungeonCharacter implements IAttack
 	}//end getAttackSpeed
 
 // New method for setting attack interface (Nick 6/3/2020)
-	public void setAttackBehavior(IAttack attackBehavior)
+	public void setAttackBehaviors(IAttack specialBehavior)
 	{
-		this.attackBehavior = attackBehavior;
+		this.specialBehavior = specialBehavior;
 	}//end setAttackBehavior
 	
 	

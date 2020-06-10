@@ -13,4 +13,9 @@ public class IncreaseHitPoints implements IAttack
 		System.out.println(hero.name + " added [" + hPoints + "] points.\n" + "Total hit points remaining are: "	+ hero.hitPoints);
 		System.out.println();
 	}
+	
+	public String toString() 
+	{
+		return "Increase Hit Points";
+	}
 }
