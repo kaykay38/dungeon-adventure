@@ -1,4 +1,4 @@
-
+import java.util.concurrent.TimeUnit;
 
 /**
  * Title: DungeonCharacter.java
@@ -156,8 +156,7 @@ This method is called by: overridden versions in Hero and Monster
 		}//end else if
 
 		if (this.hitPoints == 0)
-			System.out.println(name + " has been killed :-(");
-
+			DungeonAdventure.displayDeathImage();
 
 	}//end method
 

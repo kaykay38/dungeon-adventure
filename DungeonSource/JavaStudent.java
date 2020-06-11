@@ -7,7 +7,7 @@ public class JavaStudent extends Hero {
 //-----------------------------------------------------------------
     public JavaStudent()
 	{
-		super("Java Student", 100, 7, .9, 45, 80, .1);
+		super("Java Student", 1000, 7, .9, 45, 80, .1);
 
 
     }//end constructor

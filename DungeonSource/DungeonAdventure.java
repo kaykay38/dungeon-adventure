@@ -1,5 +1,7 @@
 import java.security.Key;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 
 public class DungeonAdventure {
 	private static int roomEntries = 0;
@@ -57,7 +59,18 @@ public class DungeonAdventure {
 	
 	 /** Game introduction Text **/
 	 public static void gameIntroduction() {
-		System.out.println("--------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
+		System.out.println("---------------------------------------------------------------------------------------------------");
+		System.out.println("  _____                                                   _                 _                  \r\n" + 
+				" |  __ \\                                         /\\      | |               | |                 \r\n" + 
+				" | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \\   __| |_   _____ _ __ | |_ _   _ _ __ ___ \r\n" + 
+				" | |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\    / /\\ \\ / _` \\ \\ / / _ \\ '_ \\| __| | | | '__/ _ \\\r\n" + 
+				" | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \\ (_| |\\ V /  __/ | | | |_| |_| | | |  __/\r\n" + 
+				" |_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_| /_/    \\_\\__,_| \\_/ \\___|_| |_|\\__|\\__,_|_|  \\___|\r\n" + 
+				"                      __/ |                                                                    \r\n" + 
+				"                     |___/   "
+				+ "\n---------------------------------------------------------------------------------------------------\n");
+		
+		
 		System.out.println("Your quest to seek the four pillars of O.O. has brought you"
 				         + "\nto the foulest, most dankest dungeon in all the land...\n  ");
 		
@@ -72,8 +85,8 @@ public class DungeonAdventure {
 		System.out.println("  Healing Potion = H      |  Vision Potion = V");
 		System.out.println(" ");
 		System.out.println(" -----------------Pillars to be Found-------------------");
-		System.out.println("  Pillar Abstraction = PA |  Pillar Encapsulation = PE");
-		System.out.println("  Pillar Inheritance = PI |  Pillar Polymorphism = PP");
+		System.out.println("  Pillar Abstraction = Y |  Pillar Encapsulation = Y");
+		System.out.println("  Pillar Inheritance = Y |  Pillar Polymorphism = Y");
 		System.out.println(" -------------------------------------------------------");
 		System.out.println("  ");
 		System.out.println("                   Example of Room");
@@ -403,9 +416,53 @@ public class DungeonAdventure {
 	/** */
 	 private static void displayDeathScreen(Dungeon dungeon) 
 	 {
-		System.out.println("Dang dude, you suck\n" + initialDungeonMap);
+		 displayDeathImage();
+		 System.out.println(initialDungeonMap);
 	 }
-
+	 
+	 protected static void displayDeathImage()
+	 {
+		System.out.println("	\r\n\n" + 
+				"                     .ed\"\"\"\" \"\"\"$$$$be.\r\n" + 
+				"                   -\"           ^\"\"**$$$e.\r\n" + 
+				"                 .\"                   '$$$c\r\n" + 
+				"                /                      \"4$$b\r\n" + 
+				"               d  3                      $$$$\r\n" + 
+				"               $  *                   .$$$$$$\r\n" + 
+				"              .$  ^c           $$$$$e$$$$$$$$.\r\n" + 
+				"              d$L  4.         4$$$$$$$$$$$$$$b\r\n" + 
+				"              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\r\n" + 
+				"  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\r\n" + 
+				" z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\r\n" + 
+				"4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\r\n" + 
+				"^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\r\n" + 
+				"  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\r\n" + 
+				"        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\r\n" + 
+				"          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\r\n" + 
+				"             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\r\n" + 
+				"               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\r\n" + 
+				"                  \"$   \"%*ebJLzb$e$$$$$b $P\"\r\n" + 
+				"                    %..      4$$$$$$$$$$ \"\r\n" + 
+				"                     $$$e   z$$$$$$$$$$%\r\n" + 
+				"                      \"*$c  \"$$$$$$$P\"\r\n" + 
+				"                       .\"\"\"*$$$$$$$$bc\r\n" + 
+				"                    .-\"    .$***$$$\"\"\"*e.\r\n" + 
+				"                 .-\"    .e$\"     \"*$c  ^*b.\r\n" + 
+				"          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\r\n" + 
+				"        .$\"        .z*\"               ^*$e.   \"*****e.\r\n" + 
+				"        $$ee$c   .d\"                     \"*$.        3.\r\n" + 
+				"        ^*$E\")$..$\"                         *   .ee==d%\r\n" + 
+				"           $.d$$$*                           *  J$$$e*\r\n" + 
+				"            \"\"\"\"\"                              \"$$$\""
+				+ "\n\t\t         YOU ARE DEAD.\n");
+		try {
+			TimeUnit.MILLISECONDS.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
+	 
 	 /** */
 	private static void setQuitGame(boolean quitGame1) {
 		 quitGame = quitGame1;
