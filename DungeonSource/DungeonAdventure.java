@@ -4,12 +4,13 @@ public class DungeonAdventure {
 	private static boolean continueGame = true;
 	private static boolean quitGame = false;
 
-
 	private Dungeon dungeon;
 	private Hero player;
 	
 	public static void main(String[] args) 
 {
+		int [] entranceCoords = {0,0}; 
+		int [] exitCoords = {0,0};
 		
 	while(continueGame)
 	{
@@ -22,10 +23,10 @@ public class DungeonAdventure {
 			curGame.dungeon = new Dungeon();
 			
 /** Dungeon generation setup **/
-			generatePortals();
-			generateRandomPillarCoords(pillarCoordinates, EntranceX, EntranceY, ExitX, ExitY);
-			generateROOMS(curGame.dungeon, pillarCoordinates, EntranceX, EntranceY, ExitX, ExitY); //Begins filling rooms with appropriate GAME OBJECTS
-
+			generatePortals(entranceCoords, exitCoords);
+			generatePillars(pillarCoordinates, entranceCoords, exitCoords);
+			generateROOMS(curGame.dungeon, pillarCoordinates, entranceCoords, exitCoords); //Begins filling rooms with appropriate GAME OBJECTS
+			displayROOMS(curGame.dungeon);
 
 /** Could we implement the save game feature here? --Austin**/
 		gameTutorial();
@@ -73,68 +74,58 @@ System.out.println("\n");	//DEBUG: REMOVE ONCE MAIN MENU IS DONE
 	
 /*****dungeon Set-up methods*********************************************************************/
 
-	public static void generatePortals()
-	{
-		EntranceX = 0; EntranceY = (int)(Math.random() * 5);
-		ExitX = 4; 	   ExitY = (int)(Math.random() * 5);
-	}
+	public static void generatePortals(int[] entrance, int[] exit)
+    {
+        entrance[0] = 0; // Sets entrance row coordinate
+        entrance[1] = (int)(Math.random() * 5); // sets entrance col coordinate
+        exit[0] = 4; // Sets exit row coordinate
+        exit[1] = (int)(Math.random() * 5); // Sets exit col coordinate
+    }
 	
-	public static void generateRandomPillarCoords(int[] pillarCoords, int EntranceX, int EntranceY, int ExitX, int ExitY)
-	{
-		
-		for(int index = 0; index < pillarCoords.length - 1; index++)
-		{
-			boolean ValidCoords = false;
-			int pillarX = 0, pillarY = 0;
-			while(!ValidCoords)
-			{
-			pillarX = (int)(Math.random() * 5);
-			pillarY = (int)(Math.random() * 5);
-			
-				if((EntranceX != pillarX || EntranceY != pillarY) && (EntranceY != pillarX || ExitY != pillarY))
-				{	//It's not at the entrance or exit, but is it the same spot as a previous pillar?
-					if(!invalidPillarCoords(pillarCoords, pillarX, pillarY))
-					{
-						ValidCoords = true; 	//Valid coords to place in Pillar, becase there's no portals or Pillars :-)
-					}
-				}
-			}	//We now have valid coordinates
-			pillarCoords[index] = pillarX;
-			pillarCoords[index + 1] = pillarY;
-			index++;
-		}
-
-	}
+    public static void generatePillars(int[] pillarCoords, int[] entrance, int [] exit)
+    {
+    	for(int index = 0; index < pillarCoords.length - 1; index++)
+    	{
+    		boolean ValidCoords = false;
+    		int pillarX = 0, pillarY = 0;
+    		while(!ValidCoords)
+    		{
+    		pillarX = (int)(Math.random() * 5);
+    		pillarY = (int)(Math.random() * 5);
+    		
+    			if((entrance[0] != pillarX || entrance[1] != pillarY) && (exit[0] != pillarX || exit[1] != pillarY))
+    			{	//It's not at the entrance or exit, but is it the same spot as a previous pillar?
+    				if(!samePillarCoords(pillarX, pillarY, pillarCoords))
+    				{
+    					ValidCoords = true; 	//Valid coords to place in Pillar, becase there's no portals or Pillars :-)
+    				}
+    			}
+    		}	//We now have valid coordinates
+    		pillarCoords[index] = pillarX;
+    		pillarCoords[index + 1] = pillarY;
+    		index++;
+    	}
+    }
 	
-	public static boolean invalidPillarCoords(int[] pillarCoords, int pillarX, int pillarY) 
-	{
-		boolean sameX = false, sameY = false;
-		for(int index = 0; index < pillarCoords.length - 1; index++)
-		{	
-			if(index % 2 == 0) //If the index is even, check if it's the same as pillarX
-			{
-				sameX = (pillarCoords[index] == pillarX);
-			}
-			if(sameX)
-			{
-				sameY = (pillarCoords[index + 1] == pillarY);	//Check to see if the index after it matches
-			}															//our pillarY value
-			if(sameX && sameY)
-			{
-				return true;		//If they are the same, we can't place it because there's a pillar there already
-			}
-		}
-		
-		return false;
-	}
+    public static boolean samePillarCoords( int pillarRow, int pillarCol, int[] pillarCoords)
+    {
+       for(int index = 0; index < pillarCoords.length - 1; index++) {    
+           if(index % 2 == 0) { // Checks for row coordinate in the even index.
+                if(pillarCoords[index] == pillarRow && pillarCoords[index + 1] == pillarCol) {
+                    return true;
+                }
+           } 
+        }
+        return false;
+    }
 	
-	private static void generateROOMS(Dungeon dungeon, int[] pillarCoordinates, int EntranceX, int EntranceY, int ExitX, int ExitY)
+	private static void generateROOMS(Dungeon dungeon, int[] pillarCoordinates, int[] entrance, int[] exit)
 	{
 		for(int xRows = 0; xRows < 5; xRows++)
 		{
 			for(int yColumns = 0; yColumns < 5; yColumns++)
 			{
-				if(xRows == EntranceX && yColumns == EntranceY)
+				if(xRows == entrance[0] && yColumns == entrance[1])
 				{
 				  //Then only place the entrance, nothing else!
 					dungeon.dungeonRooms[xRows][yColumns] = new Room();
@@ -146,7 +137,7 @@ System.out.println("\n");	//DEBUG: REMOVE ONCE MAIN MENU IS DONE
 					heroY = yColumns;
 					continue;
 				}
-				if(xRows == ExitX && yColumns == ExitY)
+				if(xRows == exit[0] && yColumns == exit[1])
 				{
 				  //Then only place the exit, nothing else!
 					dungeon.dungeonRooms[xRows][yColumns] = new Room();
@@ -157,7 +148,7 @@ System.out.println("\n");	//DEBUG: REMOVE ONCE MAIN MENU IS DONE
 				}
 				else
 				  //Valid spot to place GAME OBJECTS
-					if(invalidPillarCoords(pillarCoordinates, xRows, yColumns))
+					if(samePillarCoords(xRows, yColumns, pillarCoordinates))
 					{
 						//Valid pillarCoords, therefore place pillar here!
 						dungeon.dungeonRooms[xRows][yColumns] = new Room();
@@ -176,6 +167,20 @@ System.out.println("\n");	//DEBUG: REMOVE ONCE MAIN MENU IS DONE
 		
 	}
 
+	
+	private static void displayROOMS(Dungeon dungeon) 
+	{
+		for(int xRows = 0; xRows < 5; xRows++)
+		{
+			for(int yColumns = 0; yColumns < 5; yColumns++)
+			{
+				System.out.println("Room " + "(" + xRows + ", " + yColumns + ")" 
+						+ dungeon.dungeonRooms[xRows][yColumns].toString() + "\n");
+			}
+		}
+		
+	}
+	
 /** Player movement **/
 	
 	private static void movementCommand(Dungeon dungeon, Hero player)
@@ -245,26 +250,26 @@ System.out.println("\n");	//DEBUG: REMOVE ONCE MAIN MENU IS DONE
 			player.visionPotions++;
 			System.out.print("***Vision potion found!***\n");
 		}
-		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_A(true))
+		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_A())
 		{
 			dungeon.dungeonRooms[heroX2][heroY2].setRoomHasPILLAR_A(false);
 			player.ooPillars++;
 			System.out.print("***(" + player.ooPillars + "/4) Pillar of Abstraction found!***");
 
 		}
-		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_E(true))
+		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_E())
 		{
 			dungeon.dungeonRooms[heroX2][heroY2].setRoomHasPILLAR_E(false);
 			player.ooPillars++;
 			System.out.print("***(" + player.ooPillars + "/4) Pillar of Encapsulation found!***");
 		}
-		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_I(true))
+		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_I())
 		{
 			dungeon.dungeonRooms[heroX2][heroY2].setRoomHasPILLAR_I(false);
 			player.ooPillars++;
 			System.out.print("***(" + player.ooPillars + "/4) Pillar of Inheritance found!***");
 		}
-		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_P(true))
+		if(dungeon.dungeonRooms[heroX2][heroY2].roomHasPILLAR_P())
 		{
 			dungeon.dungeonRooms[heroX2][heroY2].setRoomHasPILLAR_P(false);
 			player.ooPillars++;
@@ -278,12 +283,10 @@ System.out.println("\n");	//DEBUG: REMOVE ONCE MAIN MENU IS DONE
 
 			Monster theMonster;
 			
-			do
-			{
+
 			    theMonster = MonsterFactory.generateMonster();
 				Dungeon.battle(player, theMonster);
 
-			} while (player.isAlive() && theMonster.isAlive());
 			
 			if(player.hitPoints <= 0)
 			{

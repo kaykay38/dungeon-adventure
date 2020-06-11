@@ -3,7 +3,7 @@ public class NullPointer implements IAttack
 {
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		if (Math.random() <= .1)
+		if (Math.random() <= 1)
 		{
 			int nullPoints = opponent.hitPoints;
 			System.out.println(hero.name + " points at the monster nullifying it for " + nullPoints + " damage!");
