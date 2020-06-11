@@ -57,28 +57,28 @@ public class DungeonAdventure {
 	
 	 /** Game introduction Text **/
 	 public static void gameIntroduction() {
-		System.out.println("--------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
-		System.out.println("Your quest to seek the four pillars of O.O. has brought you"
-				         + "\nto the foulest, most dankest dungeon in all the land...\n  ");
+		System.out.println("----------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
+		System.out.println("Your quest to seek the four pillars of O.O. has brought"+
+						 "\nyou to the foulest, most dankest dungeon in all the land...\n  ");
 		
-		System.out.println("To escape the dungeon, you must brave the monsters, dodge the pits, "
-						 + "\nand seek the four Pillars of O.O.\n");
+		System.out.println("To escape the dungeon, you must brave the monsters,"
+						+"\ndodge the pits, and seek the four Pillars of O.O.\n");
 																	//"or press L to load a saved game."
 	 //DEBUG: REMOVE ONCE MAIN MENU IS DONE
-		System.out.println("\n----------------------Symbol Key-----------------------");
+		System.out.println("\n-----------------------Symbol Key------------------------");
 		System.out.println("  Multiple Items = M      |  Empty room = E");
 		System.out.println("  Entrance = I            |  Exit = O");
 		System.out.println("  Monster = X             |  Pit = P");
 		System.out.println("  Healing Potion = H      |  Vision Potion = V");
 		System.out.println(" ");
-		System.out.println(" -----------------Pillars to be Found-------------------");
+		System.out.println(" ------------------Pillars to be Found--------------------");
 		System.out.println("  Pillar Abstraction = PA |  Pillar Encapsulation = PE");
 		System.out.println("  Pillar Inheritance = PI |  Pillar Polymorphism = PP");
-		System.out.println(" -------------------------------------------------------");
+		System.out.println(" ---------------------------------------------------------");
 		System.out.println("  ");
 		System.out.println("                   Example of Room");
 		System.out.println("\t\t\t* - *\r\n" 
-						+ "\t\t\t| P | \n\t\t\t* - *\n--------------------------------------------------------\n"
+						+ "\t\t\t| P | \n\t\t\t* - *\n----------------------------------------------------------\n"
 						+ "\n\t\tPress any key to continue\t\t\n"
 						);
 													
