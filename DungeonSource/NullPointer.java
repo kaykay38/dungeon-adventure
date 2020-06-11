@@ -6,12 +6,12 @@ public class NullPointer implements IAttack
 		if (Math.random() <= .1)
 		{
 			int nullPoints = opponent.getHitPoints();
-			System.out.println(hero.getName() + " points at the monster nullifying it for " + nullPoints + " damage!");
+			System.out.println("\n" + hero.getName() + " points at the monster nullifying it for " + nullPoints + " damage!");
 			opponent.subtractHitPoints(nullPoints);
 		}//end blow succeeded
 		else
 		{
-			System.out.println(hero.getName() + " failed to nullify the monster.");
+			System.out.println("\n" + hero.getName() + " failed to nullify the monster.");
 			System.out.println();
 		}//blow failed
 

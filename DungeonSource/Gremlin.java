@@ -20,7 +20,7 @@ public class Gremlin extends Monster
 
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(this.getName() + " jabs his kris at " + opponent.getName() + ":");
+		System.out.println("\n" + this.getName() + " jabs his kris at " + opponent.getName() + ":");
 		super.attack(opponent);
 
 	}//end override of attack

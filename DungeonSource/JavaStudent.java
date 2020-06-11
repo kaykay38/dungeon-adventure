@@ -16,7 +16,7 @@ public class JavaStudent extends Hero {
 //-----------------------------------------------------------------
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(hero.getName() + " throws " + opponent.getName() + " out of the bounds:");
+		System.out.println("\n" + hero.getName() + " throws " + opponent.getName() + " out of the bounds:");
 		super.attack(opponent);
 	}//end override of attack method
 	

@@ -62,23 +62,20 @@ this task
 		int choice;
 		Hero theHero;
 		
-		System.out.print("\t\t\tChoose a hero:\n\t\t\t" 
-		+ "1. Warrior\n\t\t\t" 
-		+ "2. Sorceress\n\t\t\t" 
-		+ "3. Thief\n\t\t\t" 
-		+ "4. Java Student\n\t\t\t" 
-		+ "5. Psychic\n\n\t\t\t"
-		+ ">>");
+		System.out.print("\nChoose a hero:\n" 
+		+ "1. Warrior\n" 
+		+ "2. Sorceress\n" 
+		+ "3. Thief\n" 
+		+ "4. Java Student\n" 
+		+ "5. Psychic\n\n"
+		+ ">> ");
 		choice = Keyboard.readInt();
-
 		theHero = HeroFactory.createHero(choice);
-
-		return theHero;
+ 		return theHero;
 
 	}//end chooseHero method
 
 
-	
 /** Moved monster generation to Factory **/
 
 /*-------------------------------------------------------------------
@@ -108,71 +105,349 @@ user has the option of quitting.
 		}//end battle loop
 
 		if (!theMonster.isAlive())
-			System.out.println(theHero.getName() + " was victorious!\n" + theHero.toString());
+			System.out.println(theHero.getName() + " was victorious!\n");
 			
 		if (!theHero.isAlive())
-			System.out.println(theHero.getName() + " was defeated :-(");
+			System.out.println(theHero.getName() + " was defeated :-(\n");
 	
 	}//end battle method
 
-
-	
-	/** Game Dependent Objects Spawning methods **/
-//Places the Entrance, the Exit, and the Pillars of OO Pieces. 
-//	RULES: (1) The entrance and exit are empty rooms. 
-//   	   (2) The Pillar pieces cannot be at the entrance or the exit. 
-//  	   (3) Pillar pieces must not occur in the same room.
-	
-	/** Player Tracking method **/
-// Maintains location of the Hero in the Dungeon
-	
-public String getRoomItem(int row, int col) {
-	return this.dungeonRooms[row][col].getItem();
-}
-	/** toString method**/
-// Builds a String containing information about the ENTIRE dungeon.
-@Override
-public String toString() {
-	String str = "\n-----------[Dungeon Map]----------\n\n";
-	int roomCol, roomRow = 0;
-	for(int row = 0; row < 11 ; row++) {
-		roomCol = 0;
-		for(int col =0; col < 11 ; col++) {
-			
-			if(col == 0 || col == 10) {            //East and West Walls
-				str += " * ";
-			}
-			else if(row == 0 || row == 10) {    //North and South Walls
-				str += " * ";
-			}
-			else {                                //Internals of the Maze
-				if(col%2==0) {
-					if(row%2==0) {
+	/** Returns a String of room item for toString method -Mia Hunt 06/10/2020 **/
+	public String getRoomItem(int row, int col) {
+		return this.dungeonRooms[row][col].getItem();
+	}
+	public String visionSurroundingRooms(int roomRow, int roomCol) {
+		int curRow = 0, curCol = 0;
+		String str = "\n------ Vision Potion Map Reveal -----\n\n";
+		// Top left corner wall (2x2 rooms)
+		if (roomRow == 0 && roomCol == 0) {
+			for (int row = 0; row < 5; row++) {
+				curCol = 0;
+				for (int col = 0; col < 5; col++) {
+					if(col == 0 || row == 0) { 
 						str += " * ";
 					}
-					else
-					{
-					str += " | ";
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
 					}
-				} 
-				else if(row%2==0) {
-					str += " - ";
-				}
-				else {
-				str += " "+getRoomItem(roomRow, roomCol)+" "; 
-				roomCol++; 
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
 				}
 			}
-		}//end of Columns
-		if(row%2==1) {
-			roomRow++;
 		}
-        str += "\n";
-	}//end of Rows
+		// Top center wall(2x3 rooms)
+		if (roomRow == 0 && (roomCol > 0 && roomCol < 4)) {
+			for (int row = 0; row < 5; row++) {
+				curCol = roomCol-1;
+				for (int col = 0; col < 7; col++) {
+					if(row == 0) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}	
+			}
+		}
+		// Top right corner wall (2x2 rooms)
+		if (roomRow == 0 && roomCol == 4) {
+			for (int row = 0; row < 5; row++) {
+				curCol = 3;
+				for (int col = 0; col < 5; col++) {
+					if(col == 5 || row == 0) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}	
+			}
+		}
+		// Left center wall (3x2 rooms)
+		if (roomCol == 0 && (roomRow > 0 && roomRow < 4)) {
+			curRow = roomRow-1;
+			for (int row = 0; row < 7; row++) {
+				curCol = 0;
+				for (int col = 0; col < 5; col++) {
+					if(col == 0) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}
+			}
+		}
+		// Right center wall (3x2 rooms)
+		if (roomCol == 4 && (roomRow > 0 && roomRow < 4)) {
+			curRow = roomRow-1;
+			for (int row = 0; row < 7; row++) {
+				curCol = 3;
+				for (int col = 0; col < 5; col++) {
+					if(col == 5) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}
+			}
+		}
+		// Bottom left corner wall (2x2 rooms)
+		if (roomRow == 4 && roomCol == 0) {
+			curRow = 3;
+			for (int row = 0; row < 5; row++) {
+				curCol = 0;
+				for (int col = 0; col < 5; col++) {
+					if(col == 0 || row == 5) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}
+			}
+		}
+		// Bottom center wall (2x3 rooms)
+		if (roomRow == 4 && (roomCol > 0 && roomCol < 4)) {
+			curRow = 3;
+			for (int row = 0; row < 5; row++) {
+				curCol = roomCol-1;
+				for (int col = 0; col < 7; col++) {
+					if(row == 5) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}
+			}
+		}
+		// Bottom right corner wall (2x2 rooms)
+		if (roomRow == 4 && roomCol == 4) {
+			curRow = 3;
+			for (int row = 0; row < 5; row++) {
+				curCol = 3;
+				for (int col = 0; col < 5; col++) {
+					if(col == 5 || row == 5) { 
+						str += " * ";
+					}
+					else {                                
+						if(col%2==0) {
+							if(row%2==0) {
+								str += " * ";
+							}
+							else
+							{
+							str += " | ";
+							}
+						} 
+						else if(row%2==0) {
+							str += " - ";
+						}
+						else {
+						str += " " + getRoomItem(curRow, curCol) + " "; 
+						curCol++; 
+						}
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}
+			}
+		}
+		// Interior room (3x3 rooms)
+		else {
+			curRow = roomRow - 1;
+			for (int row = 0; row < 7; row++) {
+				curCol = roomCol - 1;
+				for (int col = 0; col < 7; col++) {
+					if(col%2==0) {
+						if(row%2==0) {
+							str += " * ";
+						}
+						else
+						{
+						str += " | ";
+						}
+					} 
+					else if(row%2==0) {
+						str += " - ";
+					}
+					else {
+					str += " " + getRoomItem(curRow, curCol) + " "; 
+					curCol++; 
+					}
+				}//end of Columns
+				if(row%2==1) {
+					curRow++;
+				}
+			}
+		}
+		str += "\n---------------------------\n\n";
+		return str;
+	}
+	/**Builds a String containing information about the ENTIRE dungeon.*/
+	@Override
+	public String toString() {
+		String str = "\n----------- Dungeon Map ----------\n\n";
+		int roomCol, roomRow = 0;
+		for(int row = 0; row < 11 ; row++) {
+			roomCol = 0;
+			for(int col =0; col < 11 ; col++) {
+				
+				if(col == 0 || col == 10 || row == 0 || row == 10) {            // Outer Walls
+					str += " * ";
+				}
+				else {                              //Internals of the Maze
+					if(col%2==0) {
+						if(row%2==0) {
+							str += " * ";
+						}
+						else
+						{
+						str += " | ";
+						}
+					} 
+					else if(row%2==0) {
+						str += " - ";
+					}
+					else {
+					str += " " + getRoomItem(roomRow, roomCol) + " "; 
+					roomCol++; 
+					}
+				}
+			}//end of Columns
+			if(row%2==1) {
+				roomRow++;
+			}
+			str += "\n";
+		}//end of Rows
 		str += "\n---------------------------------\n\n";
-	return str;
-
-
-}
-	
+		return str;
+	}
 }//end Dungeon class

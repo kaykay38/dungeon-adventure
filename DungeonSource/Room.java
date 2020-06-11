@@ -42,21 +42,43 @@ public class Room
 	public boolean hasHealthPOTION() { return this.hasHealthPOTION; }
 	public boolean hasVisionPOTION() { return this.hasVisionPOTION; }
 
-/** Data field SETTERS **/	
+/** Data field SETTERS **/
 	public void setRoomCoords(int row, int col) { this.row = row; this.col = col; }
+	public void setItem(String item) { this.item = item; }
 	public void setHasPILLAR_A(boolean hasPILLAR_A) { this.hasPILLAR_A = hasPILLAR_A; }
 	public void setHasPILLAR_E(boolean hasPILLAR_E) { this.hasPILLAR_E = hasPILLAR_E; }
 	public void setHasPILLAR_I(boolean hasPILLAR_I) { this.hasPILLAR_I = hasPILLAR_I; }
 	public void setHasPILLAR_P(boolean hasPILLAR_P) { this.hasPILLAR_P = hasPILLAR_P; }
-	public void setIsEntrance(boolean isENTRANCE) { this.isENTRANCE = isENTRANCE; if(isENTRANCE) {this.item = "I"; this.itemCount++;} } 
-	public void setIsExit(boolean isEXIT) { this.isEXIT = isEXIT; if(isEXIT) {this.item = "O"; this.itemCount++;} }
+	public void setIsEntrance(boolean isENTRANCE) { this.isENTRANCE = isENTRANCE; if(isENTRANCE) {this.item = "I"; this.itemCount=1;} } 
+	public void setIsExit(boolean isEXIT) { this.isEXIT = isEXIT; if(isEXIT) {this.item = "O"; this.itemCount=1;} }
 	public void setHasMONSTER(boolean hasMONSTER) { this.hasMONSTER = hasMONSTER; }
 	public void setHasPIT(boolean hasPIT) { this.hasPIT = hasPIT; }
 	public void setHasHealthPOTION(boolean hasHealthPOTION) { this.hasHealthPOTION = hasHealthPOTION; }
 	public void setHasVisionPOTION(boolean hasVisionPOTION) { this.hasVisionPOTION = hasVisionPOTION; }
 	
+	public void setRoomItem(String item) {
+		setItem(item.toUpperCase());
+		switch(item) {
+			case "v":
+				this.hasVisionPOTION =true;
+				this.itemCount=1;
+				break;
+			case "x":
+				this.hasMONSTER =true;
+				this.itemCount=1;
+				break;
+			case "p":
+				this.hasPIT =true;
+				this.itemCount=1;
+				break;
+			case "h":
+			this.hasHealthPOTION =true;
+			this.itemCount=1;
+			break;
+		}
+	}
 	
-	/** Generates a list of items within the hero's room **/
+	/** Displays the contents of the room **/
 	public String displayStat() 
 	{
 		return 
@@ -177,7 +199,7 @@ public class Room
 		}
 	}
 
-	/** */
+	/** Decrement item method for easy decrementation in external classes*/
 	public void minusItem() {
 		this.itemCount--;
 	}
@@ -189,47 +211,47 @@ public class Room
         //Interior room, not on outer edge of Dungeon
 		if(row > 0 && row < 4 && col > 0 && col < 4) 
 		{
-			str = "\t\t      *-*\n\t\t      |" + item + "|\n\t\t      *-*";
+			str = "\t\t\t* - *\n\t\t\t| " + item + " |\n\t\t\t* - *";
         }
         //Bottom wall of the Dungeon
         if(col > 0 && col < 4 && row == 4)
         {
-            str = "\t\t      *-*\n\t\t      |" + item + "|\n\t\t      ***";
+            str = "\t\t\t* - *\n\t\t\t| " + item + " |\n\t\t\t* * *";
         }
         //Top wall of the Dungeon
         if(col > 0 && col < 4 && row == 0)
         {
-            str = "\t\t      ***\n\t\t      |" + item + "|\n\t\t      *-*";
+            str = "\t\t\t* * *\n\t\t\t| " + item + " |\n\t\t\t* - *";
         }
         //Left wall of the Dungeon
         if(row > 0 && row < 4 && col == 0)
         {
-            str = "\t\t      *-*\n\t\t      *" + item + "|\n\t\t      *-*";
+            str = "\t\t\t* - *\n\t\t\t* " + item + " |\n\t\t\t* - *";
         }
         //Right wall of the Dungeon
         if(row > 0 && row < 4 && col == 4)
         {
-            str = "\t\t      *-*\n\t\t      |" + item + "*\n\t\t      *-*";
+            str = "\t\t\t* - *\n\t\t\t| " + item + " *\n\t\t\t* - *";
         }
         //Top left room of the Dungeon
         if(row == 0 && col == 0)
         {
-            str = "\t\t      ***\n\t\t      *" + item + "|\n\t\t      *-*";
+            str = "\t\t\t* * *\n\t\t\t* " + item + " |\n\t\t\t* - *";
         }
         //Top right room of the Dungeon
         if(row == 0 && col == 4)
         {
-            str = "\t\t      ***\n\t\t      |" + item + "*\n\t\t      *-*";
+            str = "\t\t\t* * *\n\t\t\t| " + item + " *\n\t\t\t* - *";
         }
          //Bottom left room of the Dungeon
         if(row == 4 && col == 0)
         {
-           str = "\t\t      *-*\n\t\t      *" + item + "|\n\t\t      ***";
+           str = "\t\t\t* - *\n\t\t\t* " + item + " |\n\t\t\t* * *";
         }
         //Bottom right room of the Dungeon
         if(row == 4 && col == 4)
         { 
-            str = "\t\t      *-*\n\t\t      |" + item + "*\n\t\t      ***";
+            str = "\t\t\t* - *\n\t\t\t| " + item + " *\n\t\t\t* * *";
         }
         return str;
 	}

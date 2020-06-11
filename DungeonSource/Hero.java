@@ -119,7 +119,7 @@ This method is called by: hero constructor
 ---------------------------------------------------------*/
   public void readName()
   {
-		System.out.print("Enter character name: ");
+		System.out.print("\nEnter character name: ");
 		this.setName(Keyboard.readString());
   }//end readName method
 
@@ -129,11 +129,11 @@ This method is called by: hero constructor
  * stats() displays fundamental hero information *
  ****************************************************/
 	public String stats() {
-	  return "\n\t   -" +  this.getName() + "'s Stats-" 
-	  + " \n\t| Hitpoints: " + this.getHitPoints()
-	  + " \n\t| Healing Potions: " + this.getHealthPotions()
-	  + " \n\t| Vision Potions: " + this.getVisionPotions()
-	  + " \n\t| OO Pillars found: " + this.getOoPillars() + "\n";
+	  return "\n\t\t----- " +  this.getName() + "'s Stats -----" 
+	  + " \n\t\t  Hitpoints: " + this.getHitPoints()
+	  + " \n\t\t  Healing Potions: " + this.getHealthPotions()
+	  + " \n\t\t  Vision Potions: " + this.getVisionPotions()
+	  + " \n\t\t  OO Pillars found: " + this.getOoPillars() + "\n";
 }
   
   
@@ -228,60 +228,10 @@ This method is called by: erowternal sources
 //** Player choices methods 
  /* @param player **/	
 
-public void playerInventory(Hero player)
-{
-	System.out.println("1) Use Health Potion   "
-					 + "2) Use Vision Potion   "
-					 + "3) Continue");
-	int choice = Keyboard.readInt();
-	while(choice > 1 || choice < 3) {
-		switch(choice)
-		{
-			case 1:
-				if(this.healthPotions > 0)
-				{
-					this.healthPotions--;
-					int prevHP = this.getHitPoints();
-					this.setHitPoints(prevHP + hpPotion());
-					System.out.println("You wipe the red elixir from your lips, health went up " 
-											+ (this.getHitPoints() - prevHP) + " points");
-					System.out.println("\t>Current Hitpoints: " + this.getHitPoints());
-					return;
-				}else
-					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
-					return;
-				
-			case 2:
-				if(visionPotions>0) {
-					this.visionPotions--;
-				}	
-				else { System.out.println("You have 0 vision potions.");}
-				//Room.displaySurroundingRooms(dungeonRoom);
-				return;
-
-			case 3:
-				return;
-				
-			default:
-				System.out.println("Invalid choice, try again");
-				System.out.println("1) Use Health Potion   "
-						 + "2) Use Vision Potion   "
-						 + "3) Continue");
-				choice = Keyboard.readInt();
-		}
-	}
-}
-
 /** Health potion methods **/	
 	
-	private int hpPotion() { return (int)( Math.random() * 11) + 5; }
+	public int hpPotion() { return (int)( Math.random() * 11) + 5; }
 	
 	/** Vision Potion method by Mia Hunt 06/09/2020 */
-	/**public String useVisionPotion(Dungeon dungeon) {
-		if ((row <= 1 || row >=3) && (col <=1 || col>=3)
-		dungeon.getRoom(row,col)
-		String map = "";
-		return map;
-	*/
 	
 }//end Hero class

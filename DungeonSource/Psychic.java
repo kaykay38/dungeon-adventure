@@ -16,7 +16,7 @@ public class Psychic extends Hero {
 //-----------------------------------------------------------------
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(hero.getName() + " forces " + opponent.getName() + " to attack itself:");
+		System.out.println("\n" + hero.getName() + " forces " + opponent.getName() + " to attack itself:");
 		super.attack(opponent);
 	}//end override of attack method
 
