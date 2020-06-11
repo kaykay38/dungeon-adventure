@@ -97,23 +97,23 @@ public class Room
 	/** Generates items to be placed in valid rooms **/
 	public void generateRoomItems() {
 		if(!this.isENTRANCE && !this.isEXIT) {
-			int randTemp = (int)(Math.random() * 20);
-			if(randTemp == 0) {
+			double randTemp = (Math.random());
+			if(randTemp <= 0.15) {
 				this.hasHealthPOTION = true;
 				this.itemCount++;
 			}
-			randTemp = (int)(Math.random() * 20);
-			if(randTemp == 0) {
+			randTemp = (Math.random());
+			if(randTemp <= 0.15) {
 				this.hasVisionPOTION = true;
 				this.itemCount++;
 			}
-			randTemp = (int)(Math.random() * 10);
-			if(randTemp == 0) {
+			randTemp = (Math.random());
+			if(randTemp <= 0.2) {
 				this.hasPIT = true;
 				this.itemCount++;
 			}
-			randTemp = (int)(Math.random() * 10);
-			if(randTemp == 0) {
+			randTemp = (Math.random());
+			if(randTemp <= 0.35) {
 				this.hasMONSTER = true;
 				this.itemCount++;
 			}
