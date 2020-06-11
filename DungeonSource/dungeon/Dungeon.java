@@ -1,3 +1,5 @@
+package dungeon;
+
 /**
  * Title: Dungeon.java
  *

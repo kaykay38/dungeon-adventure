@@ -1,6 +1,6 @@
-package JUnitTests;
+package jUnitTests;
 
-junit.framework.*;
+import junit.framework.*;
 
 public class RoomTests {
     
