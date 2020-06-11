@@ -1,5 +1,7 @@
 import java.security.Key;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 
 public class DungeonAdventure {
 	private static int roomEntries = 0;
@@ -79,28 +81,52 @@ public class DungeonAdventure {
 	
 	 /** Game introduction Text **/
 	 public static void gameIntroduction() {
-		System.out.println("--------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
+ HEAD
+		System.out.println("----------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
+		System.out.println("Your quest to seek the four pillars of O.O. has brought"+
+						 "\nyou to the foulest, most dankest dungeon in all the land...\n  ");
+
+		System.out.println("---------------------------------------------------------------------------------------------------");
+		System.out.println("  _____                                                   _                 _                  \r\n" + 
+				" |  __ \\                                         /\\      | |               | |                 \r\n" + 
+				" | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \\   __| |_   _____ _ __ | |_ _   _ _ __ ___ \r\n" + 
+				" | |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\    / /\\ \\ / _` \\ \\ / / _ \\ '_ \\| __| | | | '__/ _ \\\r\n" + 
+				" | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \\ (_| |\\ V /  __/ | | | |_| |_| | | |  __/\r\n" + 
+				" |_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_| /_/    \\_\\__,_| \\_/ \\___|_| |_|\\__|\\__,_|_|  \\___|\r\n" + 
+				"                      __/ |                                                                    \r\n" + 
+				"                     |___/   "
+				+ "\n---------------------------------------------------------------------------------------------------\n");
+		
+		
 		System.out.println("Your quest to seek the four pillars of O.O. has brought you"
 				         + "\nto the foulest, most dankest dungeon in all the land...\n  ");
+ 2428509a7ab83d17aac73bebfc4e3d3fb051afeb
 		
-		System.out.println("To escape the dungeon, you must brave the monsters, dodge the pits, "
-						 + "\nand seek the four Pillars of O.O.\n");
+		System.out.println("To escape the dungeon, you must brave the monsters,"
+						+"\ndodge the pits, and seek the four Pillars of O.O.\n");
 																	//"or press L to load a saved game."
 	 //DEBUG: REMOVE ONCE MAIN MENU IS DONE
-		System.out.println("\n----------------------Symbol Key-----------------------");
+		System.out.println("\n-----------------------Symbol Key------------------------");
 		System.out.println("  Multiple Items = M      |  Empty room = E");
 		System.out.println("  Entrance = I            |  Exit = O");
 		System.out.println("  Monster = X             |  Pit = P");
 		System.out.println("  Healing Potion = H      |  Vision Potion = V");
 		System.out.println(" ");
-		System.out.println(" -----------------Pillars to be Found-------------------");
+ HEAD
+		System.out.println(" ------------------Pillars to be Found--------------------");
 		System.out.println("  Pillar Abstraction = PA |  Pillar Encapsulation = PE");
 		System.out.println("  Pillar Inheritance = PI |  Pillar Polymorphism = PP");
+		System.out.println(" ---------------------------------------------------------");
+
+		System.out.println(" -----------------Pillars to be Found-------------------");
+		System.out.println("  Pillar Abstraction = Y |  Pillar Encapsulation = Y");
+		System.out.println("  Pillar Inheritance = Y |  Pillar Polymorphism = Y");
 		System.out.println(" -------------------------------------------------------");
+ 2428509a7ab83d17aac73bebfc4e3d3fb051afeb
 		System.out.println("  ");
 		System.out.println("                   Example of Room");
 		System.out.println("\t\t\t* - *\r\n" 
-						+ "\t\t\t| P | \n\t\t\t* - *\n--------------------------------------------------------\n"
+						+ "\t\t\t| P | \n\t\t\t* - *\n----------------------------------------------------------\n"
 						+ "\n\t\tPress any key to continue\t\t\n"
 						);
 													
@@ -362,24 +388,6 @@ public class DungeonAdventure {
 				 return;
 			case "i":
 				 inventoryOptions(hero, dungeon);
-				 return;
-			case "p":
-				 System.out.println(dungeon);
-				 return;
-			case "h":
-				 System.out.println("\nHero position: ("+hero.getRow()+","+hero.getCol()+")");
-				 return; 
-			case "q":
-				 System.out.print("\nAre you sure you want to quit this game? (y/n)\n>> ");
-				 char quit = Keyboard.readChar();
-				 if(quit == 'y' || quit == 'Y') {
-					exitGame();
-				 }
-				 return; 
-			default:
-				 System.out.println("\nInvalid choice, try again");
-				 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west)\nEnter a command:\n>> ");
-				 direction = Keyboard.readString();
 		 }
 	 }
 	 
@@ -391,16 +399,16 @@ public class DungeonAdventure {
 	 {
 		 String direction;
 		 System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());	//Displays the current room of the Hero
-		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west, q = quit)\nEnter a command:\n>> ");
+		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west)\nEnter a command:\n>> ");
 		 direction = Keyboard.readString();
 		 moveHero(direction, hero, dungeon);
 	 }
 
 	 public static void inventoryOptions(Hero hero, Dungeon dungeon)
 	{
-	System.out.print("\n1) Use Health Potion   "
+	System.out.println("1) Use Health Potion   "
 					 + "2) Use Vision Potion   "
-					 + "3) Continue\n\n>> ");
+					 + "3) Continue");
 	int choice = Keyboard.readInt();
 	while(choice > 1 || choice < 3) {
 		switch(choice)
@@ -411,22 +419,27 @@ public class DungeonAdventure {
 					hero.setHealthPotions(hero.getHealthPotions()-1);
 					int prevHP = hero.getHitPoints();
 					hero.setHitPoints(prevHP + hero.hpPotion());
-					System.out.println("\nYou wipe the red elixir from your lips, health went up " 
+					System.out.println("You wipe the red elixir from your lips, health went up " 
 											+ (hero.getHitPoints() - prevHP) + " points");
 					System.out.println("\t>Current Hitpoints: " + hero.getHitPoints());
 					return;
 				}else
-					System.out.println("\nYou look in your potion bag and admire the dust...\n\t>No health potions available");
+					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
 					return;
 				
 			case 2:
+ master
 				if(hero.getVisionPotions() > 0) {
 					String map = dungeon.visionSurroundingRooms(hero.getRow(), hero.getCol());
 					System.out.println(map);
+
+				if(hero.getVisionPotions() >0) {
+					System.out.println(dungeon.visionSurroundingRooms(hero.getRow(), hero.getCol()));
+ master
 					System.out.println("\nYou have used a vision potion, " + hero.getVisionPotions() + " remaining.");
 					hero.setVisionPotions(hero.getVisionPotions()-1);;
 				}	
-				else { System.out.println("\nYou have 0 vision potions.");
+				else { System.out.println("You have 0 vision potions.");
 				return;
 				}
 
@@ -434,10 +447,10 @@ public class DungeonAdventure {
 				return;
 				
 			default:
-				System.out.println("\nInvalid choice, try again");
-				System.out.print("1) Use Health Potion   "
+				System.out.println("Invalid choice, try again");
+				System.out.println("1) Use Health Potion   "
 						 + "2) Use Vision Potion   "
-						 + "3) Continue\n\n>> ");
+						 + "3) Continue");
 				choice = Keyboard.readInt();
 		}
 	}
@@ -446,8 +459,10 @@ public class DungeonAdventure {
 	/** */
 	 private static void displayDeathScreen(Dungeon dungeon) 
 	 {
-		System.out.println("\nDang dude, you suck\n" + initialDungeonMap);
+		 displayDeathImage();
+		 System.out.println(initialDungeonMap);
 	 }
+ master
 
 	 private static void playAgain() {
 		System.out.println("\nDo you want to play again? Hit 'n' to quit. Anything else to play again.\n>> ");
@@ -462,6 +477,50 @@ public class DungeonAdventure {
 	 private static void setPlayAgain(boolean choice)
 	 {
 		 playAgain = choice;
+
+	 
+	 protected static void displayDeathImage()
+	 {
+		System.out.println("	\r\n\n" + 
+				"                     .ed\"\"\"\" \"\"\"$$$$be.\r\n" + 
+				"                   -\"           ^\"\"**$$$e.\r\n" + 
+				"                 .\"                   '$$$c\r\n" + 
+				"                /                      \"4$$b\r\n" + 
+				"               d  3                      $$$$\r\n" + 
+				"               $  *                   .$$$$$$\r\n" + 
+				"              .$  ^c           $$$$$e$$$$$$$$.\r\n" + 
+				"              d$L  4.         4$$$$$$$$$$$$$$b\r\n" + 
+				"              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$\r\n" + 
+				"  e$\"\"=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$\r\n" + 
+				" z$$b. ^c     3$$$F \"$$$$b   $\"$$$$$$$  $$$$*\"      .=\"\"$c\r\n" + 
+				"4$$$$L        $$P\"  \"$$b   .$ $$$$$...e$$        .=  e$$$.\r\n" + 
+				"^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$\r\n" + 
+				"  \"**$$$ec   \"   %ce\"\"    $$$  $$$$$$$$$$*    .r\" =$$$$P\"\"\r\n" + 
+				"        \"*$b.  \"c  *$e.    *** d$$$$$\"L$$    .d\"  e$$***\"\r\n" + 
+				"          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*\".eeP\"\r\n" + 
+				"             \"$$$$$$\"'$=e....$*$$**$cz$$\" \"..d$*\"\r\n" + 
+				"               \"*$$$  *=%4.$ L L$ P3$$$F $$$P\"\r\n" + 
+				"                  \"$   \"%*ebJLzb$e$$$$$b $P\"\r\n" + 
+				"                    %..      4$$$$$$$$$$ \"\r\n" + 
+				"                     $$$e   z$$$$$$$$$$%\r\n" + 
+				"                      \"*$c  \"$$$$$$$P\"\r\n" + 
+				"                       .\"\"\"*$$$$$$$$bc\r\n" + 
+				"                    .-\"    .$***$$$\"\"\"*e.\r\n" + 
+				"                 .-\"    .e$\"     \"*$c  ^*b.\r\n" + 
+				"          .=*\"\"\"\"    .e$*\"          \"*bc  \"*$e..\r\n" + 
+				"        .$\"        .z*\"               ^*$e.   \"*****e.\r\n" + 
+				"        $$ee$c   .d\"                     \"*$.        3.\r\n" + 
+				"        ^*$E\")$..$\"                         *   .ee==d%\r\n" + 
+				"           $.d$$$*                           *  J$$$e*\r\n" + 
+				"            \"\"\"\"\"                              \"$$$\""
+				+ "\n\t\t         YOU ARE DEAD.\n");
+		try {
+			TimeUnit.MILLISECONDS.sleep(1500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ master
 	 }
 	 
 	 /** */
@@ -480,11 +539,13 @@ public class DungeonAdventure {
 		System.exit(0);
 	}
 
-	public static void saveGame() {
-
-	}
-
-	public static void loadGame() {
-
+	private static void playAgain() {
+		System.out.println("Want to play again(y/n)?\n>> ");
+			char choice = Keyboard.readChar();
+			if(choice == 'n' || choice == 'N')
+			{
+				setQuitGame(true);
+			} else
+				return;
 	}
  }//end of CLASS 
