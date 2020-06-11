@@ -1,3 +1,5 @@
+package dungeon;
+
 import java.util.concurrent.TimeUnit;
 
 /**

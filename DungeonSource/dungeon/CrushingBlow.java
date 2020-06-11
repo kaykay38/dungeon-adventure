@@ -1,4 +1,4 @@
-
+package dungeon;
 public class CrushingBlow implements IAttack
 {
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
