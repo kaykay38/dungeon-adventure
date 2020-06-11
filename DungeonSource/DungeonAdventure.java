@@ -338,6 +338,24 @@ public class DungeonAdventure {
 				 return;
 			case "i":
 				 inventoryOptions(hero, dungeon);
+				 return;
+			case "p":
+				 System.out.println(dungeon);
+				 return;
+			case "h":
+				 System.out.println("\nHero position: ("+hero.getRow()+","+hero.getCol()+")");
+				 return; 
+			case "q":
+				 System.out.print("\nAre you sure you want to quit this game? (y/n)\n>> ");
+				 char quit = Keyboard.readChar();
+				 if(quit == 'y' || quit == 'Y') {
+					exitGame();
+				 }
+				 return; 
+			default:
+				 System.out.println("\nInvalid choice, try again");
+				 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west)\nEnter a command:\n>> ");
+				 direction = Keyboard.readString();
 		 }
 	 }
 	 
@@ -349,16 +367,16 @@ public class DungeonAdventure {
 	 {
 		 String direction;
 		 System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());	//Displays the current room of the Hero
-		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west)\nEnter a command:\n>> ");
+		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west, q = quit)\nEnter a command:\n>> ");
 		 direction = Keyboard.readString();
 		 moveHero(direction, hero, dungeon);
 	 }
 
 	 public static void inventoryOptions(Hero hero, Dungeon dungeon)
 	{
-	System.out.println("1) Use Health Potion   "
+	System.out.print("\n1) Use Health Potion   "
 					 + "2) Use Vision Potion   "
-					 + "3) Continue");
+					 + "3) Continue\n\n>> ");
 	int choice = Keyboard.readInt();
 	while(choice > 1 || choice < 3) {
 		switch(choice)
@@ -369,21 +387,22 @@ public class DungeonAdventure {
 					hero.setHealthPotions(hero.getHealthPotions()-1);
 					int prevHP = hero.getHitPoints();
 					hero.setHitPoints(prevHP + hero.hpPotion());
-					System.out.println("You wipe the red elixir from your lips, health went up " 
+					System.out.println("\nYou wipe the red elixir from your lips, health went up " 
 											+ (hero.getHitPoints() - prevHP) + " points");
 					System.out.println("\t>Current Hitpoints: " + hero.getHitPoints());
 					return;
 				}else
-					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
+					System.out.println("\nYou look in your potion bag and admire the dust...\n\t>No health potions available");
 					return;
 				
 			case 2:
 				if(hero.getVisionPotions() >0) {
-					System.out.println(dungeon.visionSurroundingRooms(hero.getRow(), hero.getCol()));
+					String map = dungeon.visionSurroundingRooms(hero.getRow(), hero.getCol());
+					System.out.println(map);
 					System.out.println("\nYou have used a vision potion, " + hero.getVisionPotions() + " remaining.");
 					hero.setVisionPotions(hero.getVisionPotions()-1);;
 				}	
-				else { System.out.println("You have 0 vision potions.");
+				else { System.out.println("\nYou have 0 vision potions.");
 				return;
 				}
 
@@ -391,10 +410,10 @@ public class DungeonAdventure {
 				return;
 				
 			default:
-				System.out.println("Invalid choice, try again");
-				System.out.println("1) Use Health Potion   "
+				System.out.println("\nInvalid choice, try again");
+				System.out.print("1) Use Health Potion   "
 						 + "2) Use Vision Potion   "
-						 + "3) Continue");
+						 + "3) Continue\n\n>> ");
 				choice = Keyboard.readInt();
 		}
 	}
@@ -403,9 +422,18 @@ public class DungeonAdventure {
 	/** */
 	 private static void displayDeathScreen(Dungeon dungeon) 
 	 {
-		System.out.println("Dang dude, you suck\n" + initialDungeonMap);
+		System.out.println("\nDang dude, you suck\n" + initialDungeonMap);
 	 }
 
+	 private static void playAgain() {
+		System.out.println("\nWant to play again(y/n)?\n>> ");
+			char choice = Keyboard.readChar();
+			if(choice == 'n' || choice == 'N')
+			{
+				setQuitGame(true);
+			} else
+				return;
+	}
 	 /** */
 	private static void setQuitGame(boolean quitGame1) {
 		 quitGame = quitGame1;
@@ -417,13 +445,11 @@ public class DungeonAdventure {
 		System.exit(0);
 	}
 
-	private static void playAgain() {
-		System.out.println("Want to play again(y/n)?\n>> ");
-			char choice = Keyboard.readChar();
-			if(choice == 'n' || choice == 'N')
-			{
-				setQuitGame(true);
-			} else
-				return;
+	public static void saveGame() {
+
+	}
+
+	public static void loadGame() {
+
 	}
  }//end of CLASS 
