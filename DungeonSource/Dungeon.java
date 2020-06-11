@@ -116,301 +116,91 @@ user has the option of quitting.
 	public String getRoomItem(int row, int col) {
 		return this.dungeonRooms[row][col].getItem();
 	}
-	public String visionSurroundingRooms(int roomRow, int roomCol) {
-		int curRow = 0, curCol = 0;
+	public String visionSurroundingRooms(int row, int col) {
 		String str = "\n------ Vision Potion Map Reveal -----\n\n";
 		// Top left corner wall (2x2 rooms)
-		if (roomRow == 0 && roomCol == 0) {
-			for (int row = 0; row < 5; row++) {
-				curCol = 0;
-				for (int col = 0; col < 5; col++) {
-					if(col == 0 || row == 0) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+		if (row == 0 && col == 0) {
+			str = "\t* * * * *"
+			   +"\n\t* "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
+			   +"\n\t* – * – *"
+			   +"\n\t* "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
+			   +"\n\t* – * – *";
 		}
 		// Top center wall(2x3 rooms)
-		if (roomRow == 0 && (roomCol > 0 && roomCol < 4)) {
-			for (int row = 0; row < 5; row++) {
-				curCol = roomCol-1;
-				for (int col = 0; col < 7; col++) {
-					if(row == 0) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}	
-			}
+		if (row == 0 && (col > 0 && col < 4)) {
+			str = "\t* * * * * * *"
+			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
+			   +"\n\t* – * – * – *"
+			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
+			   +"\n\t* – * – * – *";
 		}
 		// Top right corner wall (2x2 rooms)
-		if (roomRow == 0 && roomCol == 4) {
-			for (int row = 0; row < 5; row++) {
-				curCol = 3;
-				for (int col = 0; col < 5; col++) {
-					if(col == 5 || row == 0) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}	
-			}
-		}
+		if (row == 0 && col == 4) {
+			str = "\t* * * * *"
+			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" *"
+			   +"\n\t* – * – *"
+			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" *"
+			   +"\n\t* – * – *";
+		}	
 		// Left center wall (3x2 rooms)
-		if (roomCol == 0 && (roomRow > 0 && roomRow < 4)) {
-			curRow = roomRow-1;
-			for (int row = 0; row < 7; row++) {
-				curCol = 0;
-				for (int col = 0; col < 5; col++) {
-					if(col == 0) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+		if (col == 0 && (row > 0 && row < 4)) {
+			str = "\t* – * – *"
+			   +"\n\t* "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
+			   +"\n\t* – * – *"
+			   +"\n\t* "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
+			   +"\n\t* - * - *"
+			   +"\n\t* "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
+			   +"\n\t* – * – *";
 		}
 		// Right center wall (3x2 rooms)
-		if (roomCol == 4 && (roomRow > 0 && roomRow < 4)) {
-			curRow = roomRow-1;
-			for (int row = 0; row < 7; row++) {
-				curCol = 3;
-				for (int col = 0; col < 5; col++) {
-					if(col == 5) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+		if (col == 4 && (row > 0 && row < 4)) {
+			str = "\t* – * – *"
+			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" *"
+			   +"\n\t* – * – *"
+			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" *"
+			   +"\n\t* - * - *"
+			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" *"
+			   +"\n\t* – * – *";
 		}
 		// Bottom left corner wall (2x2 rooms)
-		if (roomRow == 4 && roomCol == 0) {
-			curRow = 3;
-			for (int row = 0; row < 5; row++) {
-				curCol = 0;
-				for (int col = 0; col < 5; col++) {
-					if(col == 0 || row == 5) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+		if (row == 4 && col == 0) {
+			str = "\t* – * – *"
+			   +"\n\t* "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
+			   +"\n\t* – * – *"
+			   +"\n\t* "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
+			   +"\n\t* * * * *";
 		}
 		// Bottom center wall (2x3 rooms)
-		if (roomRow == 4 && (roomCol > 0 && roomCol < 4)) {
-			curRow = 3;
-			for (int row = 0; row < 5; row++) {
-				curCol = roomCol-1;
-				for (int col = 0; col < 7; col++) {
-					if(row == 5) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+		if (row == 4 && (col > 0 && col < 4)) {
+			str = "\t* – * – * – *"
+			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
+			   +"\n\t* – * – * – *"
+			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
+			   +"\n\t* * * * * * *";
 		}
 		// Bottom right corner wall (2x2 rooms)
-		if (roomRow == 4 && roomCol == 4) {
-			curRow = 3;
-			for (int row = 0; row < 5; row++) {
-				curCol = 3;
-				for (int col = 0; col < 5; col++) {
-					if(col == 5 || row == 5) { 
-						str += " * ";
-					}
-					else {                                
-						if(col%2==0) {
-							if(row%2==0) {
-								str += " * ";
-							}
-							else
-							{
-							str += " | ";
-							}
-						} 
-						else if(row%2==0) {
-							str += " - ";
-						}
-						else {
-						str += " " + getRoomItem(curRow, curCol) + " "; 
-						curCol++; 
-						}
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+		if (row == 4 && col == 4) {
+			str = "\t* – * – *"
+			+"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" *"
+			+"\n\t* – * – *"
+			+"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" *"
+			+"\n\t* * * * *";	
 		}
 		// Interior room (3x3 rooms)
 		else {
-			curRow = roomRow - 1;
-			for (int row = 0; row < 7; row++) {
-				curCol = roomCol - 1;
-				for (int col = 0; col < 7; col++) {
-					if(col%2==0) {
-						if(row%2==0) {
-							str += " * ";
-						}
-						else
-						{
-						str += " | ";
-						}
-					} 
-					else if(row%2==0) {
-						str += " - ";
-					}
-					else {
-					str += " " + getRoomItem(curRow, curCol) + " "; 
-					curCol++; 
-					}
-				}//end of Columns
-				if(row%2==1) {
-					curRow++;
-				}
-			}
+			str = "\t* – * – * – *"
+			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
+			   +"\n\t* – * – * – *"
+			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
+			   +"\n\t* * * * * * *"
+			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
+			   +"\n\t* – * – * – *";
 		}
 		str += "\n---------------------------\n\n";
 		return str;
 	}
+		
+	
 	/**Builds a String containing information about the ENTIRE dungeon.*/
 	@Override
 	public String toString() {
