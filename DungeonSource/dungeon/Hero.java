@@ -195,12 +195,14 @@ This method is called by: erowternal sources
 	    numTurns = this.getAttackSpeed()/opponent.getAttackSpeed();
 		if (numTurns == 0)
 			numTurns++;
-		System.out.println("Number of turns this round is: " + numTurns);
+		System.out.println("Number of turns for this round is: " + numTurns);
 		
 		int choice;
 
 		do
 		{
+		    if (numTurns > 0)
+			    System.out.println("\nNumber of turns remaining is: " + numTurns);
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. " + this.getAttackBehavior());
 		    System.out.print("Choose an option: ");
@@ -217,10 +219,9 @@ This method is called by: erowternal sources
 		    }//end switch
 
 			numTurns--;
-			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			
 
-		} while(numTurns > 0);
+		} while(numTurns > 0 && opponent.isAlive());
 
 	}//end battleChoices
 
@@ -230,7 +231,7 @@ This method is called by: erowternal sources
 
 /** Health potion methods **/	
 	
-	public int hpPotion() { return (int)( Math.random() * 11) + 5; }
+	public int hpPotion() { return (int)( Math.random() * 10) + 15; }
 	
 	/** Vision Potion method by Mia Hunt 06/09/2020 */
 	
