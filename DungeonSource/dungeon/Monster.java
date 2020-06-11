@@ -58,7 +58,7 @@ public abstract class Monster extends DungeonCharacter
  }//end method
 
  public int dropHealthPotion() {
-	 if (this.getHitPoints()<= 0 && Math.random() <= chanceToHeal) {
+	 if (Math.random() <= chanceDropHealthPotion) {
 		System.out.println(this.getName() + " dropped a health potion!\n***Health potion added to inventory!***"); 
 		return 1;
 	 }

@@ -11,9 +11,13 @@ public class DungeonAdventure {
 	private static String initialDungeonMap;
 	private Dungeon dungeon;
 	private Hero player;
+	private static boolean gameWin = false;
+	private static boolean playAgain = false;
 	
 	public static void main(String[] args) 
 	{
+		
+		do {
 		DungeonAdventure curGame = new DungeonAdventure();
 		
 		/** Could we implement the save game feature here? --Austin**/
@@ -44,19 +48,37 @@ public class DungeonAdventure {
 		//curGame.dungeon.dungeonRooms[2][2].setRoomItem("v");
 		System.out.println(curGame.dungeon);
 		
-		while(curGame.player.isAlive()&&!quitGame)
+		while(curGame.player.isAlive() && !quitGame)
 		{
 			System.out.println(curGame.player.stats());
 			movementCommand(curGame.dungeon, curGame.player);
 			evaluateRoom(curGame.dungeon, curGame.player);
-		}
-		if(!curGame.player.isAlive()) {
-			displayDeathScreen(curGame.dungeon);
-			playAgain();
-		}
-		if(quitGame) {
-			exitGame();
-		}	
+			
+			if(!curGame.player.isAlive()) {
+				displayDeathScreen(curGame.dungeon);
+				playAgain();
+				if(quitGame) {
+					exitGame();
+				}
+				else
+					break;
+			}
+			
+			if(gameWin)
+			{
+				playAgain();
+				if(quitGame) {
+					exitGame();
+				}
+				else
+					gameWin = false;
+					break;
+			}
+			
+		} // End gameplay while loop
+		
+		} while (playAgain);
+			
 	}
 	
 	 /** Game introduction Text **/
@@ -64,6 +86,7 @@ public class DungeonAdventure {
 		System.out.println("----------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
 		System.out.println("Your quest to seek the four pillars of O.O. has brought"+
 						 "\nyou to the foulest, most dankest dungeon in all the land...\n  ");
+
 		System.out.println("---------------------------------------------------------------------------------------------------");
 		System.out.println("  _____                                                   _                 _                  \r\n" + 
 				" |  __ \\                                         /\\      | |               | |                 \r\n" + 
@@ -89,6 +112,11 @@ public class DungeonAdventure {
 		System.out.println("  Monster = X             |  Pit = P");
 		System.out.println("  Healing Potion = H      |  Vision Potion = V");
 		System.out.println(" ");
+		System.out.println(" ------------------Pillars to be Found--------------------");
+		System.out.println("  Pillar Abstraction = PA |  Pillar Encapsulation = PE");
+		System.out.println("  Pillar Inheritance = PI |  Pillar Polymorphism = PP");
+		System.out.println(" ---------------------------------------------------------");
+
 		System.out.println(" -----------------Pillars to be Found-------------------");
 		System.out.println("  Pillar Abstraction = Y |  Pillar Encapsulation = Y");
 		System.out.println("  Pillar Inheritance = Y |  Pillar Polymorphism = Y");
@@ -119,52 +147,52 @@ public class DungeonAdventure {
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasVisionPOTION())
 		 {
-			System.out.println("\n********* Vision potion found! *********");
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasVisionPOTION(false);
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
-			hero.setVisionPotions(hero.getVisionPotions()+1); 
+			 System.out.println("\n********* Vision potion found! *********");
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasVisionPOTION(false);
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
+			 hero.setVisionPotions(hero.getVisionPotions()+1);
 			 
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_A())
 		 {
-			System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Abstraction found! ******"); 
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_A(false);
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_A(false);
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
-	 
+			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Abstraction found! ******"); 
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_E())
 		 {
-			System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Encapsulation found! ******"); 
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_E(false);
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_E(false);
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
-			 
+			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Encapsulation found! ******"); 
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_I())
 		 {
-			System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Inheritance found! ******"); 
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_I(false);
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_I(false);
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
+			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Inheritance found! ******"); 
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_P())
 		 {
-			System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Polymorphism found! ******"); 
-			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_P(false);
+			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasPILLAR_P(false);
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
+			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Polymorphism found! ******"); 
 		 }
 		 if(dungeon.dungeonRooms[row][col].hasPIT())
 		{
-			int pitDamage = (int)( Math.random() * 21);
-			System.out.println("\nYou fell into a pit, taking " + pitDamage + " points of damage!");
-			hero.setHitPoints(hero.getHitPoints() - pitDamage);
+			 int pitDamage = (int)((Math.random() * 20) + 1);
+			 System.out.println("\nYou fell into a pit, taking " + pitDamage + " points of damage!");
+			 hero.setHitPoints(hero.getHitPoints() - pitDamage);
+			 if(hero.getHitPoints() < 1)
+				 System.out.println(hero.getName() + " died by falling into a pit.");
 		}
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasMONSTER())
 		 {
@@ -173,10 +201,11 @@ public class DungeonAdventure {
 			 Monster theMonster = MonsterFactory.generateMonster();
 			 Dungeon.battle(hero, theMonster);
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasMONSTER(theMonster.isAlive());
-			 if(hero.isAlive()) {
-				dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
-			 	dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
-			 	hero.setHealthPotions(theMonster.dropHealthPotion());
+			 if(hero.isAlive())
+			 {
+				 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
+				 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
+				 hero.setHealthPotions(hero.getHealthPotions() + theMonster.dropHealthPotion());
 			 }
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].isEXIT())
@@ -200,7 +229,8 @@ public class DungeonAdventure {
 								  + "\t>>" + hero.getName() + "steps into the purple glow of the obsidian portal, fading from the dungeon");
 				//Game is over, need to figure out the right way to handle this
 				System.out.print("\nYou beat the game!");
-				playAgain();
+				setGameWin(true);
+				
 			}
 		 }
 		 
@@ -396,12 +426,13 @@ public class DungeonAdventure {
 					return;
 				
 			case 2:
-				if(hero.getVisionPotions() >0) {
-					System.out.println(dungeon.visionSurroundingRooms(hero.getRow(), hero.getCol()));
+				if(hero.getVisionPotions() > 0) {
+					String map = dungeon.visionSurroundingRooms(hero.getRow(), hero.getCol());
+					System.out.println(map);
 					System.out.println("\nYou have used a vision potion, " + hero.getVisionPotions() + " remaining.");
-					hero.setVisionPotions(hero.getVisionPotions()-1);;
+					hero.setVisionPotions(hero.getVisionPotions()-1);
 				}	
-				else { System.out.println("You have 0 vision potions.");
+				else { System.out.println("\nYou have 0 vision potions.");
 				return;
 				}
 
@@ -424,6 +455,22 @@ public class DungeonAdventure {
 		 displayDeathImage();
 		 System.out.println(initialDungeonMap);
 	 }
+
+	 private static void playAgain() {
+		System.out.println("\nDo you want to play again? Hit 'n' to quit. Anything else to play again.\n>> ");
+			char choice = Keyboard.readChar();
+			if(choice == 'n' || choice == 'N')
+			{
+				setQuitGame(true);
+			} else
+				setPlayAgain(true);
+	 }
+	 
+	 private static void setPlayAgain(boolean choice)
+	 {
+		 playAgain = choice;
+	 }
+
 	 
 	 protected static void displayDeathImage()
 	 {
@@ -470,22 +517,18 @@ public class DungeonAdventure {
 	 
 	 /** */
 	private static void setQuitGame(boolean quitGame1) {
-		 quitGame = quitGame1;
-	 }
+		quitGame = quitGame1;
+	}
 
+	private static void setGameWin(boolean gameWon)
+	{
+		gameWin = gameWon;
+	}
+	
 	 /** */
 	private static void exitGame() {
 		System.out.println("\nThank you for playing.\n\nQuitting game...");
 		System.exit(0);
 	}
 
-	private static void playAgain() {
-		System.out.println("Want to play again(y/n)?\n>> ");
-			char choice = Keyboard.readChar();
-			if(choice == 'n' || choice == 'N')
-			{
-				setQuitGame(true);
-			} else
-				return;
-	}
  }//end of CLASS 

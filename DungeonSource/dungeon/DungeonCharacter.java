@@ -154,7 +154,6 @@ This method is called by: overridden versions in Hero and Monster
 				this.hitPoints = 0;
 			System.out.println(getName() + " hit " + " for <" + hitPoints + "> points damage.");
 			System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
-			System.out.println();
 		}//end else if
 
 		if (this.hitPoints == 0)

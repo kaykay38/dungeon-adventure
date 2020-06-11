@@ -122,81 +122,81 @@ user has the option of quitting.
 		String str = "\n------ Vision Potion Map Reveal -----\n\n";
 		// Top left corner wall (2x2 rooms)
 		if (row == 0 && col == 0) {
-			str = "\t* * * * *"
+			str += "\t* * * * *"
 			   +"\n\t* "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
-			   +"\n\t* – * – *"
+			   +"\n\t* - * - *"
 			   +"\n\t* "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
-			   +"\n\t* – * – *";
+			   +"\n\t* - * - *";
 		}
 		// Top center wall(2x3 rooms)
-		if (row == 0 && (col > 0 && col < 4)) {
-			str = "\t* * * * * * *"
+		else if (row == 0 && (col > 0 && col < 4)) {
+			str += "\t* * * * * * *"
 			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
-			   +"\n\t* – * – * – *"
+			   +"\n\t* - * - * - *"
 			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
-			   +"\n\t* – * – * – *";
+			   +"\n\t* - * - * - *";
 		}
 		// Top right corner wall (2x2 rooms)
-		if (row == 0 && col == 4) {
-			str = "\t* * * * *"
+		else if (row == 0 && col == 4) {
+			str += "\t* * * * *"
 			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" *"
-			   +"\n\t* – * – *"
+			   +"\n\t* - * - *"
 			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" *"
-			   +"\n\t* – * – *";
+			   +"\n\t* - * - *";
 		}	
 		// Left center wall (3x2 rooms)
-		if (col == 0 && (row > 0 && row < 4)) {
-			str = "\t* – * – *"
+		else if (col == 0 && (row > 0 && row < 4)) {
+			str += "\t* - * - *"
 			   +"\n\t* "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
-			   +"\n\t* – * – *"
+			   +"\n\t* - * - *"
 			   +"\n\t* "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
 			   +"\n\t* - * - *"
 			   +"\n\t* "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
-			   +"\n\t* – * – *";
+			   +"\n\t* - * - *";
 		}
 		// Right center wall (3x2 rooms)
-		if (col == 4 && (row > 0 && row < 4)) {
-			str = "\t* – * – *"
+		else if (col == 4 && (row > 0 && row < 4)) {
+			str += "\t* - * - *"
 			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" *"
-			   +"\n\t* – * – *"
+			   +"\n\t* - * - *"
 			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" *"
 			   +"\n\t* - * - *"
 			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" *"
-			   +"\n\t* – * – *";
+			   +"\n\t* - * - *";
 		}
 		// Bottom left corner wall (2x2 rooms)
-		if (row == 4 && col == 0) {
-			str = "\t* – * – *"
+		else if (row == 4 && col == 0) {
+			str += "\t* - * - *"
 			   +"\n\t* "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
-			   +"\n\t* – * – *"
+			   +"\n\t* - * - *"
 			   +"\n\t* "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
 			   +"\n\t* * * * *";
 		}
 		// Bottom center wall (2x3 rooms)
-		if (row == 4 && (col > 0 && col < 4)) {
-			str = "\t* – * – * – *"
+		else if (row == 4 && (col > 0 && col < 4)) {
+			str += "\t* - * - * - *"
 			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
-			   +"\n\t* – * – * – *"
+			   +"\n\t* - * - * - *"
 			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
 			   +"\n\t* * * * * * *";
 		}
 		// Bottom right corner wall (2x2 rooms)
-		if (row == 4 && col == 4) {
-			str = "\t* – * – *"
+		else if (row == 4 && col == 4) {
+			str += "\t* - * - *"
 			+"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" *"
-			+"\n\t* – * – *"
+			+"\n\t* - * - *"
 			+"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" *"
 			+"\n\t* * * * *";	
 		}
 		// Interior room (3x3 rooms)
 		else {
-			str = "\t* – * – * – *"
+			str += "\t* - * - * - *"
 			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
-			   +"\n\t* – * – * – *"
+			   +"\n\t* - * - * - *"
 			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
-			   +"\n\t* * * * * * *"
+			   +"\n\t* - * - * - *"
 			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
-			   +"\n\t* – * – * – *";
+			   +"\n\t* - * - * - *";
 		}
 		str += "\n---------------------------\n\n";
 		return str;
