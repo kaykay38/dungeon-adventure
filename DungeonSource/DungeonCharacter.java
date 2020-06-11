@@ -154,11 +154,8 @@ This method is called by: overridden versions in Hero and Monster
 			System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
 		}//end else if
 
- master
-
 		if (this.hitPoints == 0)
 			DungeonAdventure.displayDeathImage();
- master
 
 	}//end method
 
