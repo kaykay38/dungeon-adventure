@@ -86,13 +86,13 @@ public class Room
 		return 
 			  "\n-------------------------------------------------------\n"
 			+ this.toString()
-			+ "\n-------------------------------------------------------"
-			+ "\nRoom: (" + this.row + "," + this.col + ")" + "          | Item Count: " + this.itemCount + "      | Item Symbol: " + this.item
-			+ "\nMonster: " + this.hasMONSTER + "       | Pit: " + this.hasPIT 
-			+ "\nEntrance: " + this.isENTRANCE + "      | Exit: " + this.isEXIT 
-			+ "\nHealth Potion: " + this.hasHealthPOTION + " | Vision Potion: " + this.hasVisionPOTION
-			+ "\nPillar A: " + this.hasPILLAR_A + "      | Pillar E: " + this.hasPILLAR_E
-			+ "\nPillar I: " + this.hasPILLAR_I + "      | Pillar P: " + this.hasPILLAR_P 
+			//+ "\n-------------------------------------------------------"
+			//+ "\nRoom: (" + this.row + "," + this.col + ")" + "          | Item Count: " + this.itemCount + "      | Item Symbol: " + this.item
+			//+ "\nMonster: " + this.hasMONSTER + "       | Pit: " + this.hasPIT 
+			//+ "\nEntrance: " + this.isENTRANCE + "      | Exit: " + this.isEXIT 
+			//+ "\nHealth Potion: " + this.hasHealthPOTION + " | Vision Potion: " + this.hasVisionPOTION
+			//+ "\nPillar A: " + this.hasPILLAR_A + "      | Pillar E: " + this.hasPILLAR_E
+			//+ "\nPillar I: " + this.hasPILLAR_I + "      | Pillar P: " + this.hasPILLAR_P 
 			+ "\n-------------------------------------------------------";
 	}
 	

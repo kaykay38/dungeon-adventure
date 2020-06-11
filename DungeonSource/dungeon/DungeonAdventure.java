@@ -46,15 +46,25 @@ public class DungeonAdventure {
 		//curGame.dungeon.dungeonRooms[4][3].setRoomItem("v");
 		//curGame.dungeon.dungeonRooms[4][4].setRoomItem("v");
 		//curGame.dungeon.dungeonRooms[2][2].setRoomItem("v");
-		System.out.println(curGame.dungeon);
+		//System.out.println(curGame.dungeon);
+		
+		boolean notMoved = true;
 		
 		while(curGame.player.isAlive() && !quitGame)
 		{
 			System.out.println(curGame.player.stats());
+			
+			if (notMoved)
+			{
+				System.out.println(curGame.dungeon.dungeonRooms[curGame.player.getRow()][curGame.player.getCol()].displayStat());
+				notMoved = false;
+			}
 			movementCommand(curGame.dungeon, curGame.player);
+			//System.out.println(curGame.dungeon.dungeonRooms[curGame.player.getRow()][curGame.player.getCol()].displayStat());	//Displays the current room of the Hero
 			evaluateRoom(curGame.dungeon, curGame.player);
 			
 			if(!curGame.player.isAlive()) {
+				System.out.println(initialDungeonMap);
 				displayDeathScreen(curGame.dungeon);
 				playAgain();
 				if(quitGame) {
@@ -66,6 +76,7 @@ public class DungeonAdventure {
 			
 			if(gameWin)
 			{
+				System.out.println(initialDungeonMap);
 				playAgain();
 				if(quitGame) {
 					exitGame();
@@ -76,6 +87,7 @@ public class DungeonAdventure {
 			}
 			
 		} // End gameplay while loop
+		
 		
 		} while (playAgain);
 			
@@ -135,14 +147,18 @@ public class DungeonAdventure {
 	  - Austin Lidey 06/08/2020, Mia Hunt 06/10/2020 
 	  -------------------------------------------------------------------------------------------------*/
 	 private static void evaluateRoom(Dungeon dungeon, Hero hero) 
-	 {	int row = hero.getRow(), col = hero.getCol();
+	 {		
+		 int row = hero.getRow(), col = hero.getCol();
+		 int changes = 0;
+		 //System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());	//Displays the current room of the Hero 
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasHealthPOTION())
 		 {
 			System.out.println("\n********* Health potion found! *********"); 
 			dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setHasHealthPOTION(false);
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
-			 hero.setHealthPotions(hero.getHealthPotions()+1);;
+			 hero.setHealthPotions(hero.getHealthPotions()+1);
+			 changes++;
 			 
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasVisionPOTION())
@@ -152,7 +168,7 @@ public class DungeonAdventure {
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].minusItem();
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setVisionPotions(hero.getVisionPotions()+1);
-			 
+			 changes++;
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_A())
 		 {
@@ -161,6 +177,7 @@ public class DungeonAdventure {
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
 			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Abstraction found! ******"); 
+			 changes++;
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_E())
 		 {
@@ -169,6 +186,7 @@ public class DungeonAdventure {
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
 			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Encapsulation found! ******"); 
+			 changes++;
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_I())
 		 {
@@ -177,6 +195,7 @@ public class DungeonAdventure {
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
 			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Inheritance found! ******"); 
+			 changes++;
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].hasPILLAR_P())
 		 {
@@ -185,6 +204,7 @@ public class DungeonAdventure {
 			 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 			 hero.setOoPillars(hero.getOoPillars()+1);
 			 System.out.println("\n****** (" + hero.getOoPillars() + "/4) Pillar of Polymorphism found! ******"); 
+			 changes++;
 		 }
 		 if(dungeon.dungeonRooms[row][col].hasPIT())
 		{
@@ -207,6 +227,8 @@ public class DungeonAdventure {
 				 dungeon.dungeonRooms[hero.getRow()][hero.getCol()].setItem();
 				 hero.setHealthPotions(hero.getHealthPotions() + theMonster.dropHealthPotion());
 			 }
+			 changes++;
+			 
 		 }
 		 if(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].isEXIT())
 		 {
@@ -230,9 +252,12 @@ public class DungeonAdventure {
 				//Game is over, need to figure out the right way to handle this
 				System.out.print("\nYou beat the game!");
 				setGameWin(true);
-				
-			}
+			 }
+			 
 		 }
+		 
+		 if (changes > 0)
+			 System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());
 		 
 	 }
 	 
@@ -396,10 +421,11 @@ public class DungeonAdventure {
 	 private static void movementCommand(Dungeon dungeon, Hero hero)
 	 {
 		 String direction;
-		 System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());	//Displays the current room of the Hero
+		 
 		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west)\nEnter a command:\n>> ");
 		 direction = Keyboard.readString();
 		 moveHero(direction, hero, dungeon);
+		 System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());	//Displays the current room of the Hero
 	 }
 
 	 public static void inventoryOptions(Hero hero, Dungeon dungeon)
