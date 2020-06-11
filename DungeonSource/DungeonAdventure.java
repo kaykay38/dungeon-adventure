@@ -59,11 +59,9 @@ public class DungeonAdventure {
 	
 	 /** Game introduction Text **/
 	 public static void gameIntroduction() {
-<<<<<<< HEAD
 		System.out.println("----------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
 		System.out.println("Your quest to seek the four pillars of O.O. has brought"+
 						 "\nyou to the foulest, most dankest dungeon in all the land...\n  ");
-=======
 		System.out.println("---------------------------------------------------------------------------------------------------");
 		System.out.println("  _____                                                   _                 _                  \r\n" + 
 				" |  __ \\                                         /\\      | |               | |                 \r\n" + 
@@ -78,7 +76,6 @@ public class DungeonAdventure {
 		
 		System.out.println("Your quest to seek the four pillars of O.O. has brought you"
 				         + "\nto the foulest, most dankest dungeon in all the land...\n  ");
->>>>>>> 2428509a7ab83d17aac73bebfc4e3d3fb051afeb
 		
 		System.out.println("To escape the dungeon, you must brave the monsters,"
 						+"\ndodge the pits, and seek the four Pillars of O.O.\n");
@@ -90,17 +87,10 @@ public class DungeonAdventure {
 		System.out.println("  Monster = X             |  Pit = P");
 		System.out.println("  Healing Potion = H      |  Vision Potion = V");
 		System.out.println(" ");
-<<<<<<< HEAD
-		System.out.println(" ------------------Pillars to be Found--------------------");
-		System.out.println("  Pillar Abstraction = PA |  Pillar Encapsulation = PE");
-		System.out.println("  Pillar Inheritance = PI |  Pillar Polymorphism = PP");
-		System.out.println(" ---------------------------------------------------------");
-=======
 		System.out.println(" -----------------Pillars to be Found-------------------");
 		System.out.println("  Pillar Abstraction = Y |  Pillar Encapsulation = Y");
 		System.out.println("  Pillar Inheritance = Y |  Pillar Polymorphism = Y");
 		System.out.println(" -------------------------------------------------------");
->>>>>>> 2428509a7ab83d17aac73bebfc4e3d3fb051afeb
 		System.out.println("  ");
 		System.out.println("                   Example of Room");
 		System.out.println("\t\t\t* - *\r\n" 
