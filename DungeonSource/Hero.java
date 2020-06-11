@@ -30,9 +30,11 @@
 
 public abstract class Hero extends DungeonCharacter
 {
-	protected double chanceToBlock;
-	protected int healthPotions, visionPotions, ooPillars; //Fundamental Hero info
-	protected int numTurns;
+	private double chanceToBlock;
+	private int healthPotions, visionPotions, ooPillars; //Fundamental Hero info
+	private int numTurns;
+	private int row, col;
+
 
 /*-----------------------------------------------------------------
 calls base constructor and gets name of hero from user*/
@@ -46,11 +48,66 @@ calls base constructor and gets name of hero from user*/
 	  this.ooPillars = 0;
 	  readName();
   }
+  public void setPosition(int row, int col) {
+	  this.row = row;
+	  this.col = col;
+  }
+  public double getChanceToBlock() {
+	return this.chanceToBlock;
+}
 
-  public int getNumTurns() { return this.numTurns; } //Added for SurpriseAttack class to get numTurns. (Nick 6/4/20)
-  
-  public void setNumTurns(int newNumTurns) { this.numTurns = newNumTurns; } //Added for SurpriseAttack class to set numTurns. (Nick 6/4/20)
-  
+public void setChanceToBlock(double chanceToBlock) {
+	this.chanceToBlock = chanceToBlock;
+}
+
+//Added for SurpriseAttack class to get numTurns. (Nick 6/4/20)
+public int getNumTurns() { 
+	return this.numTurns; 
+} 
+  //Added for SurpriseAttack class to set numTurns. (Nick 6/4/20)
+  public void setNumTurns(int newNumTurns) { 
+	  this.numTurns = newNumTurns; 
+} 
+public int getHealthPotions() {
+	return this.healthPotions;
+}
+
+public void setHealthPotions(int healthPotions) {
+	this.healthPotions = healthPotions;
+}
+
+public int getVisionPotions() {
+	return this.visionPotions;
+}
+
+public void setVisionPotions(int visionPotions) {
+	this.visionPotions = visionPotions;
+}
+
+public int getOoPillars() {
+	return this.ooPillars;
+}
+
+public void setOoPillars(int ooPillars) {
+	this.ooPillars = ooPillars;
+}
+
+public int getRow() {
+	return this.row;
+}
+
+public void setRow(int row) {
+	this.row = row;
+}
+
+public int getCol() {
+	return this.col;
+}
+
+public void setCol(int col) {
+	this.col = col;
+}
+
 /*-------------------------------------------------------
 readName obtains a name for the hero from the user
 
@@ -62,21 +119,22 @@ This method is called by: hero constructor
 ---------------------------------------------------------*/
   public void readName()
   {
-		System.out.print("\tEnter character name: ");
-		name = Keyboard.readString();
+		System.out.print("Enter character name: ");
+		this.setName(Keyboard.readString());
   }//end readName method
 
   
+  
 /****************************************************
- * toString() displays fundamental hero information *
+ * stats() displays fundamental hero information *
  ****************************************************/
-  public String toString() {
-	  return "\n\t        -" + this.name + "'s Stats-" 
-	  + " \n\t     | Hitpoints: " + this.hitPoints 
-	  + " \n\t     | Healing Potions: " + this.healthPotions
-	  + " \n\t     | Vision Potions: " + this.visionPotions
-	  + " \n\t     | OO Pillars found: " + this.ooPillars + "\n";
-}//end toString method
+	public String stats() {
+	  return "\n\t   -" +  this.getName() + "'s Stats-" 
+	  + " \n\t| Hitpoints: " + this.getHitPoints()
+	  + " \n\t| Healing Potions: " + this.getHealthPotions()
+	  + " \n\t| Vision Potions: " + this.getVisionPotions()
+	  + " \n\t| OO Pillars found: " + this.getOoPillars() + "\n";
+}
   
   
 /*-------------------------------------------------------
@@ -110,7 +168,7 @@ public void subtractHitPoints(int hitPoints)
 	{
 		if (defend())
 		{
-			System.out.println(name + " BLOCKED the attack!");
+			System.out.println(this.getName() + " BLOCKED the attack!");
 		}
 		else
 		{
@@ -130,11 +188,11 @@ Receives: opponent
 Returns: nothing
 
 This method calls: getAttackSpeed()
-This method is called by: external sources
+This method is called by: erowternal sources
 ---------------------------------------------------------*/
 	public void battleChoices(DungeonCharacter opponent)
 	{
-	    numTurns = attackSpeed/opponent.getAttackSpeed();
+	    numTurns = this.getAttackSpeed()/opponent.getAttackSpeed();
 		if (numTurns == 0)
 			numTurns++;
 		System.out.println("Number of turns this round is: " + numTurns);
@@ -144,8 +202,7 @@ This method is called by: external sources
 		do
 		{
 		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. " + this.specialBehavior.toString());
-		    System.out.println("3. Use Health Potion" + " ["+ this.healthPotions +" available]");
+		    System.out.println("2. " + this.getAttackBehavior());
 		    System.out.print("Choose an option: ");
 		    choice = Keyboard.readInt();
 
@@ -153,17 +210,8 @@ This method is called by: external sources
 		    {
 			    case 1: attack(this, opponent);
 			        break;
-			    case 2: this.specialBehavior.attack(this, opponent);
+			    case 2: this.getAttackBehavior().attack(this, opponent);
 			        break;
-			    case 3: 
-			    	if(this.healthPotions == 0)
-			    	{
-					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available\n");
-					break;
-			    	} else
-						this.hitPoints += hpPotion();
-		    			System.out.println("\n*Health Potion consumed*\n" + this.name + "'s health is now " + this.hitPoints + "\n");
-			    		break;
 			    default:
 			        System.out.println("invalid choice!");
 		    }//end switch
@@ -177,57 +225,63 @@ This method is called by: external sources
 	}//end battleChoices
 
 	
-/** Player choice methods **/	
-	public void playerInventory(Hero player)
-	{
-		System.out.println("1) Use Health Potion   "
+//** Player choices methods 
+ /* @param player **/	
+
+public void playerInventory(Hero player)
+{
+	System.out.println("1) Use Health Potion   "
+					 + "2) Use Vision Potion   "
+					 + "3) Continue");
+	int choice = Keyboard.readInt();
+	while(choice > 1 || choice < 3) {
+		switch(choice)
+		{
+			case 1:
+				if(this.healthPotions > 0)
+				{
+					this.healthPotions--;
+					int prevHP = this.getHitPoints();
+					this.setHitPoints(prevHP + hpPotion());
+					System.out.println("You wipe the red elixir from your lips, health went up " 
+											+ (this.getHitPoints() - prevHP) + " points");
+					System.out.println("\t>Current Hitpoints: " + this.getHitPoints());
+					return;
+				}else
+					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
+					return;
+				
+			case 2:
+				if(visionPotions>0) {
+					this.visionPotions--;
+				}	
+				else { System.out.println("You have 0 vision potions.");}
+				//Room.displaySurroundingRooms(dungeonRoom);
+				return;
+
+			case 3:
+				return;
+				
+			default:
+				System.out.println("Invalid choice, try again");
+				System.out.println("1) Use Health Potion   "
 						 + "2) Use Vision Potion   "
 						 + "3) Continue");
-		int choice = Keyboard.readInt();
-		while(choice > 1 || choice < 3) {
-			switch(choice)
-			{
-				case 1:
-					if(this.healthPotions > 0)
-					{
-						int prevHP = this.hitPoints;
-						this.hitPoints += hpPotion();
-						System.out.println("You wipe the red elixir from your lips, health went up " 
-												+ (this.hitPoints - prevHP) + " points");
-						System.out.println("\t>Current Hitpoints: " + this.hitPoints);
-						return;
-					}else
-						System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
-						return;
-					
-				case 2:
-					if(this.visionPotions > 0)
-					{
-						this.visionPotions--;
-						//Mia is doing this	
-					return;
-					} else
-						System.out.println("You look in your potion bag and admire the dust...\n\t>No vision potions available");
-					return;
-				case 3:
-					return;
-					
-				default:
-					System.out.println("Invalid choice, try again");
-					System.out.println("1) Use Health Potion   "
-							 + "2) Use Vision Potion   "
-							 + "3) Continue");
-					choice = Keyboard.readInt();
-			}
+				choice = Keyboard.readInt();
 		}
 	}
+}
+
+/** Health potion methods **/	
 	
+	private int hpPotion() { return (int)( Math.random() * 11) + 5; }
 	
-/** Health potion methods **/		
-private int hpPotion() { this.healthPotions--; return (int)( Math.random() * 11) + 5; }
-
-
-/** Player tracking methods **/	
-
+	/** Vision Potion method by Mia Hunt 06/09/2020 */
+	/**public String useVisionPotion(Dungeon dungeon) {
+		if ((row <= 1 || row >=3) && (col <=1 || col>=3)
+		dungeon.getRoom(row,col)
+		String map = "";
+		return map;
+	*/
 	
 }//end Hero class

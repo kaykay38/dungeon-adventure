@@ -45,30 +45,13 @@
 */
 public class Dungeon
 {
-	public Room[][] dungeonRooms;
+	Room[][] dungeonRooms;
 	
-//    public static void main(String[] args)	/** We'll need to remove this and make it a method **/
-//	{
-//
-//		Hero theHero;
-//		Monster theMonster;
-//
-//		do
-//		{
-//		    theHero = chooseHero();
-//		    theMonster = MonsterFactory.generateMonster();
-//			battle(theHero, theMonster);
-//
-//		} while (playAgain());
-//
-//    }//end main method
-
 	public Dungeon()
 	{
 		this.dungeonRooms = new Room[5][5];
 	}
-	
-	
+
 /*-------------------------------------------------------------------
 chooseHero allows the user to select a hero, creates that hero, and
 returns it.  It utilizes a polymorphic reference (Hero) to accomplish
@@ -80,12 +63,12 @@ this task
 		Hero theHero;
 		
 		System.out.print("\t\t\tChoose a hero:\n\t\t\t" 
-		                       + "1. Warrior\n\t\t\t" 
-				               + "2. Sorceress\n\t\t\t" 
-		                       + "3. Thief\n\t\t\t" 
-				               + "4. Java Student\n\t\t\t" 
-		                       + "5. Psychic\n\n\t\t\t    "
-				               + ">");
+		+ "1. Warrior\n\t\t\t" 
+		+ "2. Sorceress\n\t\t\t" 
+		+ "3. Thief\n\t\t\t" 
+		+ "4. Java Student\n\t\t\t" 
+		+ "5. Psychic\n\n\t\t\t"
+		+ ">>");
 		choice = Keyboard.readInt();
 
 		theHero = HeroFactory.createHero(choice);
@@ -98,22 +81,9 @@ this task
 	
 /** Moved monster generation to Factory **/
 
-
-
 /*-------------------------------------------------------------------
-playAgain allows gets choice from user to play another game.  It returns
-true if the user chooses to continue, false otherwise.
+Removed playAgain() -Mia Hunt 06/09/2020
 ---------------------------------------------------------------------*/
-	public static boolean playAgain()
-	{
-		char again;
-
-		System.out.println("Play again (y/n)?");
-		again = Keyboard.readChar();
-
-		return (again == 'Y' || again == 'y');
-	}//end playAgain method
-
 
 /*-------------------------------------------------------------------
 battle is the actual combat portion of the game.  It requires a Hero
@@ -123,10 +93,8 @@ user has the option of quitting.
 ---------------------------------------------------------------------*/
 	public static void battle(Hero theHero, Monster theMonster)
 	{
-		char pause = 'p';
 		System.out.println(theHero.getName() + " battles " + theMonster.getName());
 		System.out.println("---------------------------------------------");
-
 		//do battle
 		while (theHero.isAlive() && theMonster.isAlive())
 		{
@@ -135,15 +103,16 @@ user has the option of quitting.
 
 			//monster's turn (provided it's still alive!)
 			if (theMonster.isAlive())
-			    theMonster.attack(theMonster, theHero);
+			    theMonster.attack(theHero);
 
 		}//end battle loop
 
 		if (!theMonster.isAlive())
-		    System.out.println(theHero.getName() + " was victorious!\n");
-		else if (!theHero.isAlive())
+			System.out.println(theHero.getName() + " was victorious!\n" + theHero.toString());
+			
+		if (!theHero.isAlive())
 			System.out.println(theHero.getName() + " was defeated :-(");
-
+	
 	}//end battle method
 
 
@@ -157,8 +126,53 @@ user has the option of quitting.
 	/** Player Tracking method **/
 // Maintains location of the Hero in the Dungeon
 	
+public String getRoomItem(int row, int col) {
+	return this.dungeonRooms[row][col].getItem();
+}
 	/** toString method**/
 // Builds a String containing information about the ENTIRE dungeon.
-	
+@Override
+public String toString() {
+	String str = "\n-----------[Dungeon Map]----------\n\n";
+	int roomCol, roomRow = 0;
+	for(int row = 0; row < 11 ; row++) {
+		roomCol = 0;
+		for(int col =0; col < 11 ; col++) {
+			
+			if(col == 0 || col == 10) {            //East and West Walls
+				str += " * ";
+			}
+			else if(row == 0 || row == 10) {    //North and South Walls
+				str += " * ";
+			}
+			else {                                //Internals of the Maze
+				if(col%2==0) {
+					if(row%2==0) {
+						str += " * ";
+					}
+					else
+					{
+					str += " | ";
+					}
+				} 
+				else if(row%2==0) {
+					str += " - ";
+				}
+				else {
+				str += " "+getRoomItem(roomRow, roomCol)+" "; 
+				roomCol++; 
+				}
+			}
+		}//end of Columns
+		if(row%2==1) {
+			roomRow++;
+		}
+        str += "\n";
+	}//end of Rows
+		str += "\n---------------------------------\n\n";
+	return str;
+
+
+}
 	
 }//end Dungeon class

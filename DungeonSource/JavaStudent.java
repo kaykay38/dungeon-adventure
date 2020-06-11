@@ -7,7 +7,7 @@ public class JavaStudent extends Hero {
 //-----------------------------------------------------------------
     public JavaStudent()
 	{
-		super("Java Student", 10000, 7, .9, 45, 80, .1);
+		super("Java Student", 100, 7, .9, 45, 80, .1);
 
 
     }//end constructor
@@ -16,7 +16,7 @@ public class JavaStudent extends Hero {
 //-----------------------------------------------------------------
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(hero.name + " throws " + opponent.getName() + " out of the bounds:");
+		System.out.println(hero.getName() + " throws " + opponent.getName() + " out of the bounds:");
 		super.attack(opponent);
 	}//end override of attack method
 	

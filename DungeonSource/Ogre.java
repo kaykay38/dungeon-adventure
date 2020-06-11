@@ -14,14 +14,14 @@ public class Ogre extends Monster
 
     public Ogre()
 	{
-		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
+		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50, .3);
 
 
     }//end constructor
 
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(name + " slowly swings a club toward's " + opponent.getName() + ":");
+		System.out.println(getName() + " slowly swings a club toward's " + opponent.getName() + ":");
 		super.attack(opponent);
 
 	}//end override of attack

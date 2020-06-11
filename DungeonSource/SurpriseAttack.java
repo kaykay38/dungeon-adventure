@@ -6,7 +6,7 @@ public class SurpriseAttack implements IAttack
 		double surprise = Math.random();
 		if (surprise <= .4)
 		{
-			System.out.println("Surprise attack was successful!\n" + hero.name + " gets an additional turn.");
+			System.out.println("Surprise attack was successful!\n" + hero.getName() + " gets an additional turn.");
 			((Hero)hero).setNumTurns(((Hero)hero).getNumTurns() + 1);
 			attack(hero, opponent);
 		}//end surprise
@@ -18,6 +18,7 @@ public class SurpriseAttack implements IAttack
 		    attack(hero, opponent);
 	}//end attack method
 	
+	@Override	
 	public String toString() 
 	{
 		return "Surprise Attack";

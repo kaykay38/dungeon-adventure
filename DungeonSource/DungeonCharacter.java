@@ -36,12 +36,15 @@
 public abstract class DungeonCharacter implements IAttack
 {
 
-	protected String name;
-	protected int hitPoints;
-	protected int attackSpeed;
-	protected double chanceToHit;
-	protected int damageMin, damageMax;
-	protected IAttack specialBehavior; //Added To Store Character's AttackBehavior
+	private String name;
+	private int hitPoints;
+	private int attackSpeed;
+	private double chanceToHit;
+	private int damageMin, damageMax;
+	private IAttack attackBehavior; //Added To Store Character's AttackBehavior
+
+	public DungeonCharacter() {
+	}
 
 //-----------------------------------------------------------------
 //explicit constructor to initialize instance variables -- it is called
@@ -64,21 +67,44 @@ public abstract class DungeonCharacter implements IAttack
 		return name;
 	}//end getName
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
 //-----------------------------------------------------------------
 	public int getHitPoints()
 	{
 		return hitPoints;
 	}//end getHitPoints
+
+	public void setHitPoints(int hitPoints) {
+		this.hitPoints = hitPoints;
+	}
 //-----------------------------------------------------------------
 	public int getAttackSpeed()
 	{
 		return attackSpeed;
 	}//end getAttackSpeed
 
+	public void setAttackSpeed(int attackSpeed) {
+		this.attackSpeed = attackSpeed;
+	}
+
+	public double getChanceToHit() {
+		return chanceToHit;
+	}
+
+	public void setChanceToHit(int chanceToHit) {
+		this.chanceToHit = chanceToHit;
+	}
+
+	public IAttack getAttackBehavior() {
+		return attackBehavior;
+	}	
 // New method for setting attack interface (Nick 6/3/2020)
-	public void setAttackBehaviors(IAttack specialBehavior)
+	public void setAttackBehavior(IAttack attackBehavior)
 	{
-		this.specialBehavior = specialBehavior;
+		this.attackBehavior = attackBehavior;
 	}//end setAttackBehavior
 	
 	
@@ -130,7 +156,7 @@ This method is called by: overridden versions in Hero and Monster
 		}//end else if
 
 		if (this.hitPoints == 0)
-			System.out.println(name + " died fighting valiantly in the Dungeon.");
+			System.out.println(name + " has been killed :-(");
 
 
 	}//end method

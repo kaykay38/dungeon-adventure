@@ -26,7 +26,7 @@ public class Warrior extends Hero
 
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(hero.name + " swings a mighty sword at " + opponent.getName() + ":");
+		System.out.println(hero.getName() + " swings a mighty sword at " + opponent.getName() + ":");
 		super.attack(opponent);
 	}//end override of attack method
 

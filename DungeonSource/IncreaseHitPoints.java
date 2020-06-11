@@ -10,10 +10,11 @@ public class IncreaseHitPoints implements IAttack
 
 		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
 		hero.addHitPoints(hPoints);
-		System.out.println(hero.name + " added [" + hPoints + "] points.\n" + "Total hit points remaining are: "	+ hero.hitPoints);
+		System.out.println(hero.getName() + " added [" + hPoints + "] points.\n" + "Total hit points remaining are: "	+ hero.getHitPoints());
 		System.out.println();
 	}
 	
+	@Override
 	public String toString() 
 	{
 		return "Increase Hit Points";

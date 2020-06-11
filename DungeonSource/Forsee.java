@@ -5,14 +5,14 @@ public class Forsee implements IAttack {
 	{
 		if (Math.random() <= 1)
 		{
-			opponent.chanceToHit = 0;
-			System.out.println(hero.name + " looks into the future seeing all of " + opponent.name + "'s attacks!");
-			System.out.println(hero.name + " will dodge all future attacks this battle.");
+			opponent.setChanceToHit(0);
+			System.out.println(hero.getName() + " looks into the future seeing all of " + opponent.getName() + "'s attacks!");
+			System.out.println(hero.getName() + " will dodge all future attacks this battle.");
 			System.out.println();
 		}
 		else
 		{
-			System.out.println(hero.name + " failed to look into " + opponent.name + "'s mind.");
+			System.out.println(hero.getName() + " failed to look into " + opponent.getName() + "'s mind.");
 			System.out.println();
 		}
 		

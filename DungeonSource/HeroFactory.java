@@ -7,23 +7,23 @@ public class HeroFactory {
 		switch(choice)
 		{
 			case 1: Hero warrior = new Warrior();
-					warrior.setAttackBehaviors(attfac.getAttack("CrushingBlow"));
+					warrior.setAttackBehavior(attfac.getAttack("CrushingBlow"));
 					return warrior;
 
 			case 2: Hero sorceress = new Sorceress();
-					sorceress.setAttackBehaviors(attfac.getAttack("IncreaseHitPoints"));
+					sorceress.setAttackBehavior(attfac.getAttack("IncreaseHitPoints"));
 					return sorceress;
 
 			case 3: Hero thief = new Thief();
-					thief.setAttackBehaviors(attfac.getAttack("SurpriseAttack"));
+					thief.setAttackBehavior(attfac.getAttack("SurpriseAttack"));
 					return thief;
 					
 			case 4: Hero jstudent = new JavaStudent();
-					jstudent.setAttackBehaviors(attfac.getAttack("NullPointer"));
+					jstudent.setAttackBehavior(attfac.getAttack("NullPointer"));
 					return jstudent;
 					
 			case 5: Hero psychic = new Psychic();
-					psychic.setAttackBehaviors(attfac.getAttack("Forsee"));
+					psychic.setAttackBehavior(attfac.getAttack("Forsee"));
 					return psychic;
 
 			default: System.out.println("invalid choice, returning Thief");

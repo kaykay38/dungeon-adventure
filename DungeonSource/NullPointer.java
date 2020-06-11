@@ -3,20 +3,21 @@ public class NullPointer implements IAttack
 {
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		if (Math.random() <= 1)
+		if (Math.random() <= .1)
 		{
-			int nullPoints = opponent.hitPoints;
-			System.out.println(hero.name + " points at the monster nullifying it for " + nullPoints + " damage!");
+			int nullPoints = opponent.getHitPoints();
+			System.out.println(hero.getName() + " points at the monster nullifying it for " + nullPoints + " damage!");
 			opponent.subtractHitPoints(nullPoints);
 		}//end blow succeeded
 		else
 		{
-			System.out.println(hero.name + " failed to nullify the monster.");
+			System.out.println(hero.getName() + " failed to nullify the monster.");
 			System.out.println();
 		}//blow failed
 
 	}
 	
+	@Override
 	public String toString() 
 	{
 		return "Null Pointer";

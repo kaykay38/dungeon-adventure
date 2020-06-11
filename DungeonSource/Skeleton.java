@@ -14,13 +14,13 @@ public class Skeleton extends Monster
 
     public Skeleton()
 	{
-		super("Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50);
+		super("Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50,.2);
 
     }//end constructor
 
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(name + " slices his rusty blade at " + opponent.getName() + ":");
+		System.out.println(getName() + " slices his rusty blade at " + opponent.getName() + ":");
 		super.attack(opponent);
 
 	}//end override of attack
