@@ -1,0 +1,314 @@
+
+
+
+------------------------------------------------------------------------------------------------
+  _____                                                   _                 _                  
+ |  __ \                                         /\      | |               | |                 
+ | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \   __| |_   _____ _ __ | |_ _   _ _ __ ___ 
+ | |  | | | | | '_ \ / _` |/ _ \/ _ \| '_ \    / /\ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \
+ | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/
+ |_____/ \__,_|_| |_|\__, |\___|\___/|_| |_| /_/    \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|
+                      __/ |                                                                    
+                     |___/   
+------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------
+	     WELCOME TO DUNGEON ADVENTURE!
+----------------------------------------------------------
+
+Your quest to seek the four pillars of O.O. has brought
+you to the foulest, most dankest dungeon in all the land...
+  
+To escape the dungeon, you must brave the monsters,
+dodge the pits, and seek the four Pillars of O.O.
+
+
+------------------------Symbol Key------------------------
+   Multiple Items = M      |  Empty room = E
+   Entrance = I            |  Exit = O
+   Monster = X             |  Pit = P
+   Healing Potion = H      |  Vision Potion = V
+
+
+-------------------Pillars to be Found--------------------
+   Pillar Abstraction = Y  |  Pillar Encapsulation = Y
+   Pillar Inheritance = Y  |  Pillar Polymorphism = Y
+----------------------------------------------------------
+  
+                    Example of Room
+			 * - *
+			 | P | 
+			 * - *
+----------------------------------------------------------
+
+		Press any key to continue		
+
+
+
+Choose a hero:
+1. Warrior
+2. Sorceress
+3. Thief
+4. Java Student
+5. Psychic
+
+>> 3
+
+Enter character name: Nick
+
+A thief named Nick has been created.
+
+		----- Nick's Stats ----- 
+		  Hitpoints: 75 
+		  Healing Potions: 0 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+
+-------------------------------------------------------
+			* * *
+			| I |
+			* - *
+-------------------------------------------------------
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- Nick's Stats ----- 
+		  Hitpoints: 75 
+		  Healing Potions: 0 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| X |
+			* - *
+-------------------------------------------------------
+
+********** MONSTER!!! **********
+
+You have stumbled upon a room with a monster, fight to the death!
+
+Nick battles Sargath the Skeleton
+---------------------------------------------
+Number of turns for this round is: 2
+
+Number of turns remaining is: 2
+1. Attack Opponent
+2. Surprise Attack
+Choose an option: 1
+
+Nick throws their dagger at Sargath the Skeleton:
+
+Nick's attack on Sargath the Skeleton failed!
+
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Surprise Attack
+Choose an option: 1
+
+Nick throws their dagger at Sargath the Skeleton:
+Sargath the Skeleton hit  for <24> points damage.
+Sargath the Skeleton now has 76 hit points remaining.
+
+
+Sargath the Skeleton's attack on Nick failed!
+
+Number of turns for this round is: 2
+
+Number of turns remaining is: 2
+1. Attack Opponent
+2. Surprise Attack
+Choose an option: 1
+
+Nick throws their dagger at Sargath the Skeleton:
+Sargath the Skeleton hit  for <36> points damage.
+Sargath the Skeleton now has 40 hit points remaining.
+Sargath the Skeleton healed itself for 38 points.
+Total hit points remaining are: 78
+
+
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Surprise Attack
+Choose an option: 1
+
+Nick throws their dagger at Sargath the Skeleton:
+Sargath the Skeleton hit  for <28> points damage.
+Sargath the Skeleton now has 50 hit points remaining.
+Sargath the Skeleton healed itself for 30 points.
+Total hit points remaining are: 80
+
+
+Nick hit  for <46> points damage.
+Nick now has 29 hit points remaining.
+
+Number of turns for this round is: 2
+
+Number of turns remaining is: 2
+1. Attack Opponent
+2. Surprise Attack
+Choose an option: 1
+
+Nick throws their dagger at Sargath the Skeleton:
+Sargath the Skeleton hit  for <36> points damage.
+Sargath the Skeleton now has 44 hit points remaining.
+
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Surprise Attack
+Choose an option: 1
+
+Nick throws their dagger at Sargath the Skeleton:
+Sargath the Skeleton hit  for <33> points damage.
+Sargath the Skeleton now has 11 hit points remaining.
+
+Nick hit  for <50> points damage.
+Nick now has 0 hit points remaining.
+
+Nick was defeated :-(
+
+
+-------------------------------------------------------
+			* - *
+			| X |
+			* - *
+-------------------------------------------------------
+
+----------- Dungeon Map ----------
+
+ *  *  *  *  *  *  *  *  *  *  * 
+ *  X  |  I  |  X  |  E  |  H  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  E  |  E  |  Y  |  Y  |  M  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  M  |  X  |  V  |  P  |  M  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  E  |  E  |  P  |  M  |  X  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  M  |  E  |  E  |  Y  |  O  * 
+ *  *  *  *  *  *  *  *  *  *  * 
+
+---------------------------------
+
+
+	
+
+                     .ed"""" """$$$$be.
+                   -"           ^""**$$$e.
+                 ."                   '$$$c
+                /                      "4$$b
+               d  3                      $$$$
+               $  *                   .$$$$$$
+              .$  ^c           $$$$$e$$$$$$$$.
+              d$L  4.         4$$$$$$$$$$$$$$b
+              $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$
+  e$""=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$
+ z$$b. ^c     3$$$F "$$$$b   $"$$$$$$$  $$$$*"      .=""$c
+4$$$$L        $$P"  "$$b   .$ $$$$$...e$$        .=  e$$$.
+^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$
+  "**$$$ec   "   %ce""    $$$  $$$$$$$$$$*    .r" =$$$$P""
+        "*$b.  "c  *$e.    *** d$$$$$"L$$    .d"  e$$***"
+          ^*$$c ^$c $$$      4J$$$$$% $$$ .e*".eeP"
+             "$$$$$$"'$=e....$*$$**$cz$$" "..d$*"
+               "*$$$  *=%4.$ L L$ P3$$$F $$$P"
+                  "$   "%*ebJLzb$e$$$$$b $P"
+                    %..      4$$$$$$$$$$ "
+                     $$$e   z$$$$$$$$$$%
+                      "*$c  "$$$$$$$P"
+                       ."""*$$$$$$$$bc
+                    .-"    .$***$$$"""*e.
+                 .-"    .e$"     "*$c  ^*b.
+          .=*""""    .e$*"          "*bc  "*$e..
+        .$"        .z*"               ^*$e.   "*****e.
+        $$ee$c   .d"                     "*$.        3.
+        ^*$E")$..$"                         *   .ee==d%
+           $.d$$$*                           *  J$$$e*
+            """""                              "$$$"
+		         YOU ARE DEAD.
+
+
+----------- Dungeon Map ----------
+
+ *  *  *  *  *  *  *  *  *  *  * 
+ *  X  |  I  |  X  |  E  |  H  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  E  |  E  |  Y  |  Y  |  M  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  M  |  X  |  V  |  P  |  M  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  E  |  E  |  P  |  M  |  X  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  M  |  E  |  E  |  Y  |  O  * 
+ *  *  *  *  *  *  *  *  *  *  * 
+
+---------------------------------
+
+
+
+Do you want to play again? Hit 'n' to quit. Anything else to play again.
+>> 
+y
+
+
+
+------------------------------------------------------------------------------------------------
+  _____                                                   _                 _                  
+ |  __ \                                         /\      | |               | |                 
+ | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \   __| |_   _____ _ __ | |_ _   _ _ __ ___ 
+ | |  | | | | | '_ \ / _` |/ _ \/ _ \| '_ \    / /\ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \
+ | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/
+ |_____/ \__,_|_| |_|\__, |\___|\___/|_| |_| /_/    \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|
+                      __/ |                                                                    
+                     |___/   
+------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------
+	     WELCOME TO DUNGEON ADVENTURE!
+----------------------------------------------------------
+
+Your quest to seek the four pillars of O.O. has brought
+you to the foulest, most dankest dungeon in all the land...
+  
+To escape the dungeon, you must brave the monsters,
+dodge the pits, and seek the four Pillars of O.O.
+
+
+------------------------Symbol Key------------------------
+   Multiple Items = M      |  Empty room = E
+   Entrance = I            |  Exit = O
+   Monster = X             |  Pit = P
+   Healing Potion = H      |  Vision Potion = V
+
+
+-------------------Pillars to be Found--------------------
+   Pillar Abstraction = Y  |  Pillar Encapsulation = Y
+   Pillar Inheritance = Y  |  Pillar Polymorphism = Y
+----------------------------------------------------------
+  
+                    Example of Room
+			 * - *
+			 | P | 
+			 * - *
+----------------------------------------------------------
+
+		Press any key to continue		
+

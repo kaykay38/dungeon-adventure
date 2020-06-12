@@ -1,0 +1,922 @@
+
+
+
+------------------------------------------------------------------------------------------------
+  _____                                                   _                 _                  
+ |  __ \                                         /\      | |               | |                 
+ | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \   __| |_   _____ _ __ | |_ _   _ _ __ ___ 
+ | |  | | | | | '_ \ / _` |/ _ \/ _ \| '_ \    / /\ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \
+ | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/
+ |_____/ \__,_|_| |_|\__, |\___|\___/|_| |_| /_/    \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|
+                      __/ |                                                                    
+                     |___/   
+------------------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------
+	     WELCOME TO DUNGEON ADVENTURE!
+----------------------------------------------------------
+
+Your quest to seek the four pillars of O.O. has brought
+you to the foulest, most dankest dungeon in all the land...
+  
+To escape the dungeon, you must brave the monsters,
+dodge the pits, and seek the four Pillars of O.O.
+
+
+------------------------Symbol Key------------------------
+   Multiple Items = M      |  Empty room = E
+   Entrance = I            |  Exit = O
+   Monster = X             |  Pit = P
+   Healing Potion = H      |  Vision Potion = V
+
+
+-------------------Pillars to be Found--------------------
+   Pillar Abstraction = Y  |  Pillar Encapsulation = Y
+   Pillar Inheritance = Y  |  Pillar Polymorphism = Y
+----------------------------------------------------------
+  
+                    Example of Room
+			 * - *
+			 | P | 
+			 * - *
+----------------------------------------------------------
+
+		Press any key to continue		
+
+
+
+Choose a hero:
+1. Warrior
+2. Sorceress
+3. Thief
+4. Java Student
+5. Psychic
+
+>> 5
+
+Enter character name: nick
+
+A psychic named nick has been created.
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 0 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+
+-------------------------------------------------------
+			* * *
+			| I |
+			* - *
+-------------------------------------------------------
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> i am a cheater
+
+----------- Dungeon Map ----------
+
+ *  *  *  *  *  *  *  *  *  *  * 
+ *  H  |  E  |  I  |  E  |  E  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  H  |  E  |  E  |  H  |  E  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  Y  |  E  |  V  |  V  |  Y  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  P  |  E  |  X  |  E  |  P  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  O  |  Y  |  M  |  Y  |  E  * 
+ *  *  *  *  *  *  *  *  *  *  * 
+
+---------------------------------
+
+
+
+-------------------------------------------------------
+			* * *
+			| I |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 0 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 0 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| V |
+			* - *
+-------------------------------------------------------
+
+********* Vision potion found! *********
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 0 
+		  Vision Potions: 1 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> i
+
+1) Use Health Potion   2) Use Vision Potion   3) Continue
+>> 2
+
+------ Vision Potion Map Reveal -----
+
+	* - * - * - *
+	| E | E | H |
+	* - * - * - *
+	| E | E | V |
+	* - * - * - *
+	| E | X | E |
+	* - * - * - *
+---------------------------
+
+
+
+You have used a vision potion, 1 remaining.
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 0 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| X |
+			* - *
+-------------------------------------------------------
+
+********** MONSTER!!! **********
+
+You have stumbled upon a room with a monster, fight to the death!
+
+nick battles Stheno the Gorgon
+---------------------------------------------
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 2
+
+nick failed to look into Stheno the Gorgon's mind.
+
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 2
+
+nick failed to look into Stheno the Gorgon's mind.
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 2
+
+nick looks into the future seeing all of Stheno the Gorgon's attacks!
+nick will dodge all future attacks in this battle.
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+Stheno the Gorgon hit  for <50> points damage.
+Stheno the Gorgon now has 100 hit points remaining.
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+Stheno the Gorgon hit  for <31> points damage.
+Stheno the Gorgon now has 69 hit points remaining.
+Stheno the Gorgon healed itself for 23 points.
+Total hit points remaining are: 92
+
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+Stheno the Gorgon hit  for <55> points damage.
+Stheno the Gorgon now has 37 hit points remaining.
+Stheno the Gorgon healed itself for 29 points.
+Total hit points remaining are: 66
+
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+
+nick's attack on Stheno the Gorgon failed!
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+Stheno the Gorgon hit  for <44> points damage.
+Stheno the Gorgon now has 22 hit points remaining.
+Stheno the Gorgon healed itself for 22 points.
+Total hit points remaining are: 44
+
+
+
+Stheno the Gorgon's attack on nick failed!
+
+Number of turns for this round is: 1
+
+Number of turns remaining is: 1
+1. Attack Opponent
+2. Forsee
+Choose an option: 1
+
+nick forces Stheno the Gorgon to attack itself:
+Stheno the Gorgon hit  for <48> points damage.
+Stheno the Gorgon now has 0 hit points remaining.
+
+nick was victorious!
+
+Stheno the Gorgon dropped a health potion!
+***Health potion added to inventory!***
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> e
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> n
+
+-------------------------------------------------------
+			* - *
+			| V |
+			* - *
+-------------------------------------------------------
+
+********* Vision potion found! *********
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 1 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> i
+
+1) Use Health Potion   2) Use Vision Potion   3) Continue
+>> 2
+
+------ Vision Potion Map Reveal -----
+
+	* - * - * - *
+	| E | H | E *
+	* - * - * - *
+	| E | E | Y *
+	* - * - * - *
+	| E | E | P *
+	* - * - * - *
+---------------------------
+
+
+
+You have used a vision potion, 1 remaining.
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> i am a cheater
+
+----------- Dungeon Map ----------
+
+ *  *  *  *  *  *  *  *  *  *  * 
+ *  H  |  E  |  I  |  E  |  E  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  H  |  E  |  E  |  H  |  E  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  Y  |  E  |  E  |  E  |  Y  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  P  |  E  |  E  |  E  |  P  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  O  |  Y  |  M  |  Y  |  E  * 
+ *  *  *  *  *  *  *  *  *  *  * 
+
+---------------------------------
+
+
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 0
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> e
+
+-------------------------------------------------------
+			* - *
+			| Y *
+			* - *
+-------------------------------------------------------
+
+****** (1/4) Pillar of Abstraction found! ******
+
+-------------------------------------------------------
+			* - *
+			| E *
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 1
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 1
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 1
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 1
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			* Y |
+			* - *
+-------------------------------------------------------
+
+****** (2/4) Pillar of Abstraction found! ******
+
+-------------------------------------------------------
+			* - *
+			* E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 2
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> e
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 2
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 2
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| Y |
+			* * *
+-------------------------------------------------------
+
+****** (3/4) Pillar of Abstraction found! ******
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* * *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 3
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> n
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 3
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> n
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 3
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> e
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 3
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> e
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 3
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* - *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 3
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> s
+
+-------------------------------------------------------
+			* - *
+			| Y |
+			* * *
+-------------------------------------------------------
+
+****** (4/4) Pillar of Abstraction found! ******
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* * *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 100 
+		  Healing Potions: 1 
+		  Vision Potions: 0 
+		  OO Pillars found: 4
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			| M |
+			* * *
+-------------------------------------------------------
+
+********* Health potion found! *********
+
+You fell into a pit, taking 8 points of damage!
+
+-------------------------------------------------------
+			* - *
+			| P |
+			* * *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 92 
+		  Healing Potions: 2 
+		  Vision Potions: 0 
+		  OO Pillars found: 4
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			| E |
+			* * *
+-------------------------------------------------------
+
+		----- nick's Stats ----- 
+		  Hitpoints: 92 
+		  Healing Potions: 2 
+		  Vision Potions: 0 
+		  OO Pillars found: 4
+
+(i = inventory options, n = north, s = south, e = east, w = west, q = quit)
+Enter a command:
+>> w
+
+-------------------------------------------------------
+			* - *
+			* O |
+			* * *
+-------------------------------------------------------
+
+You enter a room through a door labeled "Portal Room" to discover
+a large obsidian structure -- a dead portal. It can be restored by finding
+the Four Pillars of OO. This is your ticket home!
+
+
+
+Woah, you found all the pillars! Good job, the portal has now been activated.
+	>>nicksteps into the purple glow of the obsidian portal, fading from the dungeon
+
+You beat the game!
+----------- Dungeon Map ----------
+
+ *  *  *  *  *  *  *  *  *  *  * 
+ *  H  |  E  |  I  |  E  |  E  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  H  |  E  |  E  |  H  |  E  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  Y  |  E  |  V  |  V  |  Y  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  P  |  E  |  X  |  E  |  P  * 
+ *  -  *  -  *  -  *  -  *  -  * 
+ *  O  |  Y  |  M  |  Y  |  E  * 
+ *  *  *  *  *  *  *  *  *  *  * 
+
+---------------------------------
+
+
+
+Do you want to play again? Hit 'n' to quit. Anything else to play again.
+>> 
+n
+
+
+Thank you for playing.
+Quitting game...
+
+
+
+   ---------------------------------------------------
+                          Credits                     
+   ---------------------------------------------------
+
+     Creators: Austin Lidey, Mia Hunt, Nick Savoie
+     Date of creation: May-June 2020
+
+
+       This is a final project we did for our design
+       patterns class at XXX University during the
+       COVID-19 epidemic. Blood, sweat, and tears
+       were were shed in the making of this game in
+       the midst of such trying times of quarantine
+       and poor 3MB/s internet.
+
+   ---------------------------------------------------
