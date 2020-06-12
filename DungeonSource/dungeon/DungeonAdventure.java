@@ -31,7 +31,7 @@ public class DungeonAdventure {
 		int[] exitCoords = {0,0};
 		int[] pillarCoords = new int[8];
 		
-		generatePortals(entranceCoords, exitCoords);	//Entrances & Exits placed & values set...
+		generatePortals(entranceCoords, exitCoords); //Entrances & Exits placed & values set...
 		generatePillars(pillarCoords, entranceCoords, exitCoords); //Pillar Coordinates selected and set...
 		generateROOMS(curGame.dungeon, pillarCoords, entranceCoords, exitCoords, curGame.player); //Begins filling rooms with appropriate GAME OBJECTS
 		initialDungeonMap = curGame.dungeon.toString();
@@ -92,55 +92,6 @@ public class DungeonAdventure {
 		} while (playAgain);
 			
 	}
-	
-	 /** Game introduction Text **/
-	 public static void gameIntroduction() {
-		System.out.println("----------------------------------------------------------" + "\n\t    WELCOME TO DUNGEON ADVENTURE!\n--------------------------------------------------------\n");
-		System.out.println("Your quest to seek the four pillars of O.O. has brought"+
-						 "\nyou to the foulest, most dankest dungeon in all the land...\n  ");
-
-		System.out.println("---------------------------------------------------------------------------------------------------");
-		System.out.println("  _____                                                   _                 _                  \r\n" + 
-				" |  __ \\                                         /\\      | |               | |                 \r\n" + 
-				" | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \\   __| |_   _____ _ __ | |_ _   _ _ __ ___ \r\n" + 
-				" | |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\    / /\\ \\ / _` \\ \\ / / _ \\ '_ \\| __| | | | '__/ _ \\\r\n" + 
-				" | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \\ (_| |\\ V /  __/ | | | |_| |_| | | |  __/\r\n" + 
-				" |_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_| /_/    \\_\\__,_| \\_/ \\___|_| |_|\\__|\\__,_|_|  \\___|\r\n" + 
-				"                      __/ |                                                                    \r\n" + 
-				"                     |___/   "
-				+ "\n---------------------------------------------------------------------------------------------------\n");
-		
-		
-		System.out.println("Your quest to seek the four pillars of O.O. has brought you"
-				         + "\nto the foulest, most dankest dungeon in all the land...\n  ");
-		
-		System.out.println("To escape the dungeon, you must brave the monsters,"
-						+"\ndodge the pits, and seek the four Pillars of O.O.\n");
-																	//"or press L to load a saved game."
-	 //DEBUG: REMOVE ONCE MAIN MENU IS DONE
-		System.out.println("\n-----------------------Symbol Key------------------------");
-		System.out.println("  Multiple Items = M      |  Empty room = E");
-		System.out.println("  Entrance = I            |  Exit = O");
-		System.out.println("  Monster = X             |  Pit = P");
-		System.out.println("  Healing Potion = H      |  Vision Potion = V");
-		System.out.println(" ");
-		System.out.println(" ------------------Pillars to be Found--------------------");
-		System.out.println("  Pillar Abstraction = PA |  Pillar Encapsulation = PE");
-		System.out.println("  Pillar Inheritance = PI |  Pillar Polymorphism = PP");
-		System.out.println(" ---------------------------------------------------------");
-
-		System.out.println(" -----------------Pillars to be Found-------------------");
-		System.out.println("  Pillar Abstraction = Y |  Pillar Encapsulation = Y");
-		System.out.println("  Pillar Inheritance = Y |  Pillar Polymorphism = Y");
-		System.out.println(" -------------------------------------------------------");
-		System.out.println("  ");
-		System.out.println("                   Example of Room");
-		System.out.println("\t\t\t* - *\r\n" 
-						+ "\t\t\t| P | \n\t\t\t* - *\n----------------------------------------------------------\n"
-						+ "\n\t\tPress any key to continue\t\t\n"
-						);
-													
-	 }//end of GameIntroduction
 
 	 /**-----------------------------------------------------------------------------------------------
 	  
@@ -411,6 +362,21 @@ public class DungeonAdventure {
 				 return;
 			case "i":
 				 inventoryOptions(hero, dungeon);
+				 return;
+			case "q":
+				 System.out.print("\nAre you sure you want to quit? (y/n)\n>> ");
+				 char quit = Keyboard.readChar();
+				 if (quit == 'y' || quit == 'Y') {
+					System.out.println(dungeon); 
+					exitGame();
+				 }
+				 break;
+			case "i am a cheater": // Prints entire dungeon map
+				 System.out.println(dungeon);
+				 return;
+			case "loco": 
+				 System.out.println("\nCurrent room: " + "(" +hero.getRow()+ "," +hero.getCol()+ ")");
+				 return;
 		 }
 	 }
 	 
@@ -422,17 +388,22 @@ public class DungeonAdventure {
 	 {
 		 String direction;
 		 
-		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west)\nEnter a command:\n>> ");
+		 System.out.print("(i = inventory options, n = north, s = south, e = east, w = west, q = quit)\nEnter a command:\n>> ");
 		 direction = Keyboard.readString();
 		 moveHero(direction, hero, dungeon);
 		 System.out.println(dungeon.dungeonRooms[hero.getRow()][hero.getCol()].displayStat());	//Displays the current room of the Hero
 	 }
 
+	/**-----------------------------------------------------------------------------------------------
+	  
+	  - Austin Lidey 06/08/2020, Mia Hunt 06/10/2020 
+	  -------------------------------------------------------------------------------------------------*/
+	 
 	 public static void inventoryOptions(Hero hero, Dungeon dungeon)
 	{
-	System.out.println("1) Use Health Potion   "
+	System.out.print("\n1) Use Health Potion   "
 					 + "2) Use Vision Potion   "
-					 + "3) Continue");
+					 + "3) Continue\n>> ");
 	int choice = Keyboard.readInt();
 	while(choice > 1 || choice < 3) {
 		switch(choice)
@@ -443,12 +414,12 @@ public class DungeonAdventure {
 					hero.setHealthPotions(hero.getHealthPotions()-1);
 					int prevHP = hero.getHitPoints();
 					hero.setHitPoints(prevHP + hero.hpPotion());
-					System.out.println("You wipe the red elixir from your lips, health went up " 
+					System.out.println("\nYou wipe the red elixir from your lips, health went up " 
 											+ (hero.getHitPoints() - prevHP) + " points");
-					System.out.println("\t>Current Hitpoints: " + hero.getHitPoints());
+					System.out.println("\n\tCurrent Hitpoints: " + hero.getHitPoints());
 					return;
 				}else
-					System.out.println("You look in your potion bag and admire the dust...\n\t>No health potions available");
+					System.out.println("\nYou look in your potion bag and admire the dust...\n\t>No health potions available");
 					return;
 				
 			case 2:
@@ -466,10 +437,10 @@ public class DungeonAdventure {
 				return;
 				
 			default:
-				System.out.println("Invalid choice, try again");
-				System.out.println("1) Use Health Potion   "
+				System.out.println("\nInvalid choice, try again");
+				System.out.print("1) Use Health Potion   "
 						 + "2) Use Vision Potion   "
-						 + "3) Continue");
+						 + "3) Continue\n>> ");
 				choice = Keyboard.readInt();
 		}
 	}
@@ -491,14 +462,83 @@ public class DungeonAdventure {
 			} else
 				setPlayAgain(true);
 	 }
-	 
+
+	 /** */
 	 private static void setPlayAgain(boolean choice)
 	 {
 		 playAgain = choice;
 	 }
 
-	 
-	 protected static void displayDeathImage()
+	 /** */
+	private static void setGameWin(boolean gameWon)
+	{
+		gameWin = gameWon;
+	}
+
+	/** Game introduction Text **/
+	private static void gameIntroduction() {
+
+		System.out.println("\n\n\n------------------------------------------------------------------------------------------------");
+		System.out.println("  _____                                                   _                 _                  \r\n" + 
+				" |  __ \\                                         /\\      | |               | |                 \r\n" + 
+				" | |  | |_   _ _ __   __ _  ___  ___  _ __      /  \\   __| |_   _____ _ __ | |_ _   _ _ __ ___ \r\n" + 
+				" | |  | | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\    / /\\ \\ / _` \\ \\ / / _ \\ '_ \\| __| | | | '__/ _ \\\r\n" + 
+				" | |__| | |_| | | | | (_| |  __/ (_) | | | |  / ____ \\ (_| |\\ V /  __/ | | | |_| |_| | | |  __/\r\n" + 
+				" |_____/ \\__,_|_| |_|\\__, |\\___|\\___/|_| |_| /_/    \\_\\__,_| \\_/ \\___|_| |_|\\__|\\__,_|_|  \\___|\r\n" + 
+				"                      __/ |                                                                    \r\n" + 
+				"                     |___/   "
+				+ "\n------------------------------------------------------------------------------------------------\n\n\n");
+		
+		System.out.println("----------------------------------------------------------" + "\n\t     WELCOME TO DUNGEON ADVENTURE!\n----------------------------------------------------------\n");
+		System.out.println("Your quest to seek the four pillars of O.O. has brought"+
+							"\nyou to the foulest, most dankest dungeon in all the land...\n  ");
+		System.out.println("To escape the dungeon, you must brave the monsters,"
+						+"\ndodge the pits, and seek the four Pillars of O.O.\n");
+																	//"or press L to load a saved game."
+	 //DEBUG: REMOVE ONCE MAIN MENU IS DONE
+		System.out.println("\n------------------------Symbol Key------------------------");
+		System.out.println("   Multiple Items = M      |  Empty room = E");
+		System.out.println("   Entrance = I            |  Exit = O");
+		System.out.println("   Monster = X             |  Pit = P");
+		System.out.println("   Healing Potion = H      |  Vision Potion = V");
+		System.out.println("\n");
+
+		System.out.println("-------------------Pillars to be Found--------------------");
+		System.out.println("   Pillar Abstraction = Y  |  Pillar Encapsulation = Y");
+		System.out.println("   Pillar Inheritance = Y  |  Pillar Polymorphism = Y");
+		System.out.println("----------------------------------------------------------");
+		System.out.println("  ");
+		System.out.println("                    Example of Room");
+		System.out.println("\t\t\t * - *\r\n" 
+						+ "\t\t\t | P | \n\t\t\t * - *\n----------------------------------------------------------\n"
+						+ "\n\t\tPress any key to continue\t\t\n"
+						);
+													
+	 }//end of GameIntroduction
+
+	 /** */
+	 private static void exitGame() {
+		System.out.println("\n\nThank you for playing."
+		+"\nQuitting game...\n\n\n"
+		+"\n   ---------------------------------------------------"
+		+"\n                          Credits                     "
+		+"\n   ---------------------------------------------------"
+		+"\n"
+		+"\n     Creators: Austin Lidey, Mia Hunt, Nick Savoie" 
+		+"\n     Date of creation: May-June 2020\n"
+		+"\n"
+		+"\n       This is a final project we did for our design" 
+		+"\n       patterns class at XXX University during the"
+		+"\n       COVID-19 epidemic. Blood, sweat, and tears"
+		+"\n       were were shed in the making of this game in"
+		+"\n       the midst of such trying times of quarantine"
+		+"\n       and poor 3MB/s internet."
+		+"\n"
+		+"\n   ---------------------------------------------------");
+		System.exit(0);
+	}
+
+	private static void displayDeathImage()
 	 {
 		System.out.println("	\r\n\n" + 
 				"                     .ed\"\"\"\" \"\"\"$$$$be.\r\n" + 
@@ -544,17 +584,6 @@ public class DungeonAdventure {
 	 /** */
 	private static void setQuitGame(boolean quitGame1) {
 		quitGame = quitGame1;
-	}
-
-	private static void setGameWin(boolean gameWon)
-	{
-		gameWin = gameWon;
-	}
-	
-	 /** */
-	private static void exitGame() {
-		System.out.println("\nThank you for playing.\n\nQuitting game...");
-		System.exit(0);
 	}
 
  }//end of CLASS 
