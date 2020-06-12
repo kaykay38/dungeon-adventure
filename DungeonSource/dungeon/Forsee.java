@@ -4,7 +4,7 @@ public class Forsee implements IAttack {
 	
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		if (Math.random() <= 1)
+		if (Math.random() <= .5)
 		{
 			opponent.setChanceToHit(0);
 			System.out.println("\n" + hero.getName() + " looks into the future seeing all of " + opponent.getName() + "'s attacks!");
