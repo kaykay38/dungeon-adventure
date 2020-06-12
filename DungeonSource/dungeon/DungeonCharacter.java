@@ -201,7 +201,7 @@ hero classes and externally
 		}//end if can attack
 		else
 		{
-			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
+			System.out.println("\n" + getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}//end else
 	}//end attack method

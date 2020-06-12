@@ -11,7 +11,7 @@ public class Drake extends Monster {
 
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent)
 	{
-		System.out.println(this.getName() + " swings its tail at " + opponent.getName() + ":");
+		System.out.println("\n" + this.getName() + " swings its tail at " + opponent.getName() + ":");
 		super.attack(opponent);
 
 	}//end override of attack
