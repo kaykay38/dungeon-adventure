@@ -4,6 +4,51 @@ import java.security.Key;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 
+ * Title: DungeonAdventure.java
+ * 
+ * Documentation of Work Done:
+ * 
+ * We restarted from scratch from the first refactor assignment because we felt that our original refactors would not work easily with
+ * new implementations.
+ * 
+ * Austin:
+ * 	Created original Room class
+ * 	Made first version of dungeon spawning
+ * 	Made first version of dungeon gameplay
+ * 	Implemented menus options for the hero
+ * 	(Focused on getting a foundation laid out)
+ * 	UML Diagram
+ * 
+ * Mia:
+ * 	Consolidated Austin's foundational code
+ * 	Made the code more efficient
+ * 	Vision potion implementation
+ * 	Exit game implementation
+ * 	Formatted code for easy readability
+ * 
+ * Nick
+ * 	Attack Interface and its behaviors.
+ * 	Flyweight Pattern for Attack Interface using AttackFactory
+ * 	Added new Heroes and Monsters and new Attack Interface Behaviors
+ * 	Error checked gameplay and logic in gameplay
+ * 	Added function to replay
+ * 	
+ * 
+ * As a group:
+ * 	On 06/10/2020 all group members worked on one machine to bring together the logic from one machine onto the machine with more efficient code.
+ * 	Our code versions got split and massive changes were made on two separate machines so we decided to work on one machine to avoid
+ * 	furthering the divide. All group members were involved in this, taking up certain tasks on the machine. After this, we learned that we could merge
+ *  code on github and not override other new code. 
+ * 
+ * 
+ * @author Austin Lidey, Mia Hunt, Nick Savoie
+ *
+ */
+
+
+
 
 public class DungeonAdventure {
 	private static int roomEntries = 0;
