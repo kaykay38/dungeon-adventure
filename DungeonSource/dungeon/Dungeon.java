@@ -190,13 +190,40 @@ user has the option of quitting.
 		}
 		// Interior room (3x3 rooms)
 		else {
-			str += "\t* - * - * - *"
-			   +"\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |"
-			   +"\n\t* - * - * - *"
-			   +"\n\t| "+ getRoomItem(row, col-1) +" | "+ getRoomItem(row, col) +" | "+ getRoomItem(row, col+1) +" |"
-			   +"\n\t* - * - * - *"
-			   +"\n\t| "+ getRoomItem(row+1, col-1) +" | "+ getRoomItem(row+1, col) +" | "+ getRoomItem(row+1, col+1) +" |"
-			   +"\n\t* - * - * - *";
+			if (row == 1)
+				str += "\t* * * * * * *";
+			else
+				str += "\t* - * - * - *";
+			
+			if (col == 1)
+				str += "\n\t* "+ getRoomItem(row-1, col-1) +" - "+ getRoomItem(row-1, col) +" - "+ getRoomItem(row-1, col+1) +" |";
+			else if (col == 3)
+				str += "\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" *";
+			else
+				str += "\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |";
+			
+			str += "\n\t* - * - * - *";
+			
+			if (col == 1)
+				str += "\n\t* "+ getRoomItem(row-1, col-1) +" - "+ getRoomItem(row-1, col) +" - "+ getRoomItem(row-1, col+1) +" |";
+			else if (col == 3)
+				str += "\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" *";
+			else
+				str += "\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |";
+			
+			str += "\n\t* - * - * - *";
+			
+			if (col == 1)
+				str += "\n\t* "+ getRoomItem(row-1, col-1) +" - "+ getRoomItem(row-1, col) +" - "+ getRoomItem(row-1, col+1) +" |";
+			else if (col == 3)
+				str += "\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" *";
+			else
+				str += "\n\t| "+ getRoomItem(row-1, col-1) +" | "+ getRoomItem(row-1, col) +" | "+ getRoomItem(row-1, col+1) +" |";
+			
+			if (row == 3)
+				str += "\n\t* * * * * * *";
+			else
+				str +="\n\t* - * - * - *";
 		}
 		str += "\n---------------------------\n\n";
 		return str;
