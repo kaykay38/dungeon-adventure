@@ -105,7 +105,7 @@ public class Room
 				this.itemCount++;
 			}
 			randTemp = (Math.random());
-			if(randTemp <= 0.15) {
+			if(randTemp <= 0.15) { 
 				this.hasVisionPOTION = true;
 				this.itemCount++;
 			}

@@ -33,8 +33,8 @@ import java.util.concurrent.TimeUnit;
  * 	Flyweight Pattern for Attack Interface using AttackFactory
  * 	Added new Heroes and Monsters and new Attack Interface Behaviors
  * 	Error checked gameplay and logic in gameplay
- * 	Added function to replay
- * 	
+ *  Added function to replay the game
+ *  Provided skeleton of UML diagram
  * 
  * As a group:
  * 	On 06/10/2020 all group members worked on one machine to bring together the logic from one machine onto the machine with more efficient code.
